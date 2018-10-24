@@ -60,7 +60,7 @@ automatically added to spotify playlist.
 -------------------------------------------------------------------------------
 
 We used Google Slides to create our electronic mock-ups:
-![welcome](luluzheng1.github.com/tuftsdev/comp20-f2018-team15)
+![welcome](/Img/welcome.jpg?raw=true)
 
 To view, click on the link below:
 https://docs.google.com/presentation/d/1U6zsfpDMY3Cr6Ibffk-iMmBxd_BufrkBV1o3GxKQjHo/edit?usp=sharing
