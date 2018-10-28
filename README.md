@@ -84,3 +84,5 @@ We used Google Slides to create our electronic mock-ups:
 To view, click on the link below:
 https://docs.google.com/presentation/d/1U6zsfpDMY3Cr6Ibffk-iMmBxd_BufrkBV1o3GxKQjHo/edit?usp=sharing
 
+## Comments by Ming
+* So this is the 15th of 19 project proposals I've read.  Shockingly this is the first trivia game I've seen in this year's batch.  I mean they've been done before but this will be fun.  Go for it.
