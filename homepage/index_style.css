@@ -5,8 +5,8 @@ body{
 	margin-right: 40px;
 	margin-left:40px;
 	margin-bottom:40px;
-  	margin-top: 120px;
-  	padding-top: 32%;
+  	margin-top: 90px;
+  	padding-top: 30%;
   	padding-bottom: 5%;
   	border-top: 10px solid #1abca6;
 	border-bottom: 10px solid #1abca6;
@@ -44,11 +44,10 @@ body:before {
 h1{
 	font-size:100px;
 	position: absolute;
-	top: -27px;
+	top: -32px;
 	left: 30%;
 	font-family:"Trebuchet MS";
 	font-weight:bold;
-/*	font-weight:normal;*/
 	letter-spacing:12px;
 	color:#f2570e;
 
@@ -57,6 +56,7 @@ h1{
 h2{
 	font-size:40px;
 	position: absolute;
+	padding-top: 2%;
 	top: 62%;
 	left: 26%;
 	font-family:"Trebuchet MS";
@@ -75,13 +75,12 @@ h3{
 	font-weight:normal;
 	letter-spacing:7px;
 	color:#f2570e;
-
 }
 
 img{
 	margin-top:10px;
 	position: absolute;
-	top: 26%;
+	top: 28%;
 	left: 40%;
 }
 
@@ -103,11 +102,47 @@ a:visited{
 	position: absolute;
 	top:110%;
 	left: 39%;
+	-webkit-animation: 1s blink step-end infinite;
+  	-moz-animation: 1s blink step-end infinite;
+  	animation: 1s blink step-end infinite;
+
 }
 
 .changecolor{
 	color:#1abca6;
+	-webkit-animation: 1s blinkBl step-end infinite;
+  	-moz-animation: 1s blinkBl step-end infinite;
+  	animation: 1s blinkBl step-end infinite;
 }
+
+@keyframes blinkBl {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #1abca6;
+  }
+}
+
+@-moz-keyframes blinkBl {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #1abca6;
+  }
+}
+
+@-webkit-keyframes blinkBl {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #1abca6;
+  }
+}
+
+
 
 .overlap{
 	color:#1abca6;
@@ -158,9 +193,11 @@ a:visited{
 }
 
 img.btn_close {
-    Position the close button
-	float: right;
-    margin: -28px -28px 0 0;
+	max-width: 15%;
+	position: relative;
+	top:-18px;
+	left:-10px;
+
 }
 
 fieldset {
@@ -169,7 +206,7 @@ fieldset {
 
 form.signin .textbox label {
     display: block;
-    padding-bottom: 7px;
+    padding-bottom: 4px;
 }
 
 form.signin .textbox span {
@@ -180,6 +217,7 @@ form.signin p, form.signin span {
     color: #CC6600;
     font-size: 20px;
     line-height: 22px;
+    margin-top: -25px;
 }
 
 form.signin .textbox input {
@@ -205,14 +243,14 @@ form.signin .textbox input {
   font-size: 30px;
   color: #CC6600;
   position: absolute;
-  top:44%;
   left:12%;
+  margin-top: 9px;
   -webkit-animation: 1s blink step-end infinite;
   -moz-animation: 1s blink step-end infinite;
   animation: 1s blink step-end infinite;
 }
 
-@keyframes "blink" {
+@keyframes blink {
   from, to {
     color: transparent;
   }
@@ -230,7 +268,7 @@ form.signin .textbox input {
   }
 }
 
-@-webkit-keyframes "blink" {
+@-webkit-keyframes blink {
   from, to {
     color: transparent;
   }
@@ -247,7 +285,7 @@ form.signin .textbox input {
     display: inline-block;
     padding: 6px 6px 4px;
     margin-top: 10px;
-    border: 1px solid black;
+    border: none;
     font: 12px;
     font-weight: bold;
     width: 80px;
@@ -256,6 +294,20 @@ form.signin .textbox input {
     left:30%;
 }
 
+.skip {
+	background-color: transparent;
+	display: block;
+	position:relative;
+	left:4%;
+	color:black;
+	width: 200px;
+	letter-spacing:2px;
+}
+
 .button:hover {
     background: black;
+}
+
+.skip:hover{
+	background: transparent;
 }
