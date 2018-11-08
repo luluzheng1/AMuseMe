@@ -44,7 +44,7 @@ body:before {
 h1{
 	font-size:100px;
 	position: absolute;
-	top: -22px;
+	top: -27px;
 	left: 30%;
 	font-family:"Trebuchet MS";
 	font-weight:bold;
@@ -76,6 +76,13 @@ h3{
 	letter-spacing:7px;
 	color:#f2570e;
 
+}
+
+img{
+	margin-top:10px;
+	position: absolute;
+	top: 26%;
+	left: 40%;
 }
 
 
