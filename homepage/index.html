@@ -5,6 +5,48 @@
 	<title>Welcome</title>
 	<meta charset="utf-8" />
 	<link href="index_style.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('a.popup').click(function() {
+    
+         //Getting the variable's value from a link 
+    	var loginBox = $(this).attr('href');
+
+    	//Fade in the Popup
+    	$(loginBox).fadeIn(300);
+    
+    	//Set the center alignment padding + border see css style
+    	var popMargTop = ($(loginBox).height() + 24) / 2; 
+    	var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    
+    	$(loginBox).css({ 
+        'margin-top' : -popMargTop,
+        'margin-left' : -popMargLeft
+    	});
+    
+    	// Add the mask to body
+    	$('body').append('<div id="mask"></div>');
+    	$('#mask').fadeIn(300);
+    
+    	return false;
+	});
+
+
+
+	// When clicking on the button close, close the popup window
+	$('a.close, #mask').live('click', function() { 
+  		$('#mask , .login-popup').fadeOut(300 , function() {
+    		$('#mask').remove();  
+		}); 
+		return false;
+	});
+
+	$('fieldset.textbox').click(function(){
+		$('.blinking-cursor').fadeOut(300);
+	});
+});
+	</script>
 </head>
 
 <body>
@@ -14,7 +56,22 @@
 	<h2>! Welcome to AMuseMe ! </h2> 
 	<h3><span class="tobold">-</span> a simple music game <span class="tobold">-</span></h3>
 
-	<!-- when nextpage is clicked, take user to the login site-->
-	<span class="nextpage"><a href="urlforthenextpage">C<span class="changecolor">l</span>i<span class="changecolor">c</span>k<span class="changecolor"> H</span>e<span class="changecolor">r</span>e <span class="changecolor">t</span>o <span class="changecolor">B</span>e<span class="changecolor">g</span>i<span class="changecolor">n</span></a></span>
+	<!-- open up a modal login box when the button is clicked -->
+	<a href="#login-box" class="popup">C<span class="changecolor">l</span>i<span class="changecolor">c</span>k<span class="changecolor"> H</span>e<span class="changecolor">r</span>e <span class="changecolor">t</span>o <span class="changecolor">B</span>e<span class="changecolor">g</span>i<span class="changecolor">n</span></a></span>
+
+	<div id="login-box" class="login-popup">
+	<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  	<form method="post" class="signin" action="#">
+        <fieldset class="textbox">
+        <label class="username">
+        <span>Nickname:</span>
+        <input id="username" name="nickname" value="" type="text" autocomplete="on" />
+        <span class="blinking-cursor">|</span>
+        </label>
+        <button class="submit button" type="button">LET'S GO</button>      
+        </fieldset>
+  	</form>
+	</div>
+
 </body>
 </html>
