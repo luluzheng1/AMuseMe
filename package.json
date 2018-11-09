@@ -1,0 +1,27 @@
+{
+  "name": "amuseme",
+  "version": "0.1.0",
+  "description": "Simple Music Trivia Game",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
+    "sass": "^1.13.4"
+  },
+  "scripts": {
+    "lint": "eslint",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuftsdev/comp20-f2018-team15.git"
+  },
+  "author": "Comp20 Team15",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tuftsdev/comp20-f2018-team15/issues"
+  },
+  "homepage": "https://github.com/tuftsdev/comp20-f2018-team15#readme"
+}

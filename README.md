@@ -60,25 +60,25 @@ automatically added to spotify playlist.
 -------------------------------------------------------------------------------
 
 We used Google Slides to create our electronic mock-ups:
-![welcome](/Img/welcome.jpg?raw=true "Welcome Page")
+![welcome](/src/assets/images/welcome.jpg?raw=true "Welcome Page")
 
-![nickname](/Img/nickname.jpg?raw=true "Nickname Page")
+![nickname](/src/assets/images/nickname.jpg?raw=true "Nickname Page")
 
-![genre](/Img/genre.jpg?raw=true "Genre Page")
+![genre](/src/assets/images/genre.jpg?raw=true "Genre Page")
 
-![play](/Img/play.jpg?raw=true "Play Round")
+![play](/src/assets/images/play.jpg?raw=true "Play Round")
 
-![answer](/Img/answer1.jpg?raw=true "Answer One")
+![answer](/src/assets/images/answer1.jpg?raw=true "Answer One")
 
-![answer](/Img/answer2.jpg?raw=true "Answer Two")
+![answer](/src/assets/images/answer2.jpg?raw=true "Answer Two")
 
-![spotify](/Img/spotify.jpg?raw=true "Spotify Page")
+![spotify](/src/assets/images/spotify.jpg?raw=true "Spotify Page")
 
-![score](/Img/high_score.jpg?raw=true "High Score Page")
+![score](/src/assets/images/high_score.jpg?raw=true "High Score Page")
 
-![history](/Img/history.jpg?raw=true "History of Play")
+![history](/src/assets/images/history.jpg?raw=true "History of Play")
 
-![statistics](/Img/statistics.jpg?raw=true "Statistics")
+![statistics](/src/assets/images/statistics.jpg?raw=true "Statistics")
 
 
 To view, click on the link below:

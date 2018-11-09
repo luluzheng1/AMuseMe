@@ -5,17 +5,18 @@ body{
 	margin-right: 40px;
 	margin-left:40px;
 	margin-bottom:40px;
-  	margin-top: 90px;
-  	padding-top: 30%;
-  	padding-bottom: 5%;
-  	border-top: 10px solid #1abca6;
+  margin-top: 90px;
+  padding-top: 30%;
+  padding-bottom: 5%;
+
+  border-top: 10px solid #1abca6;
 	border-bottom: 10px solid #1abca6;
-  	z-index: 1;
-  	position:relative;
+  z-index: 1;
+  position:relative;
 }
 
 /**the green inner border**/
-body:after { 
+body:after {
   	content: "";
   	display: block;
   	position: absolute;
@@ -105,7 +106,6 @@ a:visited{
 	-webkit-animation: 1s blink step-end infinite;
   	-moz-animation: 1s blink step-end infinite;
   	animation: 1s blink step-end infinite;
-
 }
 
 .changecolor{
@@ -154,7 +154,6 @@ a:visited{
 .tobold{
 	font-weight: bolder;
 }
-
 
 /* Mask for background, by default is not display */
 #mask {
