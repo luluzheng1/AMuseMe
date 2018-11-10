@@ -4,16 +4,18 @@ body{
 	font-size:20px;
 	margin-right: 40px;
 	margin-left:40px;
-	margin-bottom:50px;
-  	margin-top: 140px;
-  	padding-top: 15%;
-  	padding-bottom: 15%;
-  	border-top: 10px solid #1abca6;
+	margin-bottom:40px;
+  margin-top: 90px;
+  padding-top: 30%;
+  padding-bottom: 5%;
+
+  border-top: 10px solid #1abca6;
 	border-bottom: 10px solid #1abca6;
-  	z-index: 1;
-  	position:relative;
+  z-index: 1;
+  position:relative;
 }
 
+/**the green inner border**/
 body:after {
   	content: "";
   	display: block;
@@ -31,23 +33,22 @@ body:before {
   	content: "";
   	display: block;
   	position: absolute;
-  	top: 17px;
+  	top: 21px;
   	left: 0px;
   	border: solid 2px white;
   	width: 1196px;
-  	min-height: 90%;
-  	padding-bottom: -10px;  
+  	min-height: 91%;
+  	padding-bottom: -2px;  
   	z-index: 10;
 }
 
 h1{
 	font-size:100px;
 	position: absolute;
-	top: 19px;
+	top: -32px;
 	left: 30%;
 	font-family:"Trebuchet MS";
 	font-weight:bold;
-/*	font-weight:normal;*/
 	letter-spacing:12px;
 	color:#f2570e;
 
@@ -56,7 +57,8 @@ h1{
 h2{
 	font-size:40px;
 	position: absolute;
-	top: 58%;
+	padding-top: 2%;
+	top: 62%;
 	left: 26%;
 	font-family:"Trebuchet MS";
 	font-weight:bold;
@@ -67,14 +69,20 @@ h2{
 h3{
 	font-size:23px;
 	position: absolute;
-	top: 78%;
+	top: 80%;
 	left: 33%;
 	font-family:"Open Sans";
 	font-style: italic;
 	font-weight:normal;
 	letter-spacing:7px;
 	color:#f2570e;
+}
 
+img{
+	margin-top:10px;
+	position: absolute;
+	top: 28%;
+	left: 40%;
 }
 
 
@@ -91,23 +99,214 @@ a:visited{
 
 }
 
-.nextpage{
+.popup{
 	position: absolute;
 	top:110%;
 	left: 39%;
+	-webkit-animation: 1s blink step-end infinite;
+  	-moz-animation: 1s blink step-end infinite;
+  	animation: 1s blink step-end infinite;
 }
 
 .changecolor{
 	color:#1abca6;
+	-webkit-animation: 1s blinkBl step-end infinite;
+  	-moz-animation: 1s blinkBl step-end infinite;
+  	animation: 1s blinkBl step-end infinite;
 }
+
+@keyframes blinkBl {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #1abca6;
+  }
+}
+
+@-moz-keyframes blinkBl {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #1abca6;
+  }
+}
+
+@-webkit-keyframes blinkBl {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #1abca6;
+  }
+}
+
+
 
 .overlap{
 	color:#1abca6;
 	position: absolute;
-	top:58%;
+	top:62%;
 	left:318px;
 }
 
 .tobold{
 	font-weight: bolder;
+}
+
+/* Mask for background, by default is not display */
+#mask {
+    display: none;
+    background: #000000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+}
+
+/* You can customize to your needs  */
+.login-popup {
+    display: none;
+    background: #1abca6;
+    padding: 10px;
+    border: 2px solid #CC6600;
+    float: left;
+    font-size: 15px;
+    font-family: "Open Sans";
+    font-weight: bold;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 99999;
+    /* Safari, Chrome */
+	border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px;
+    /* Firefox */
+        -webkit-border-radius: 3px;
+    /* Safari, Chrome */;
+}
+
+img.btn_close {
+	max-width: 15%;
+	position: relative;
+	top:-18px;
+	left:-10px;
+
+}
+
+fieldset {
+    border: none;
+}
+
+form.signin .textbox label {
+    display: block;
+    padding-bottom: 4px;
+}
+
+form.signin .textbox span {
+    display: block;
+}
+
+form.signin p, form.signin span {
+    color: #CC6600;
+    font-size: 20px;
+    line-height: 22px;
+    margin-top: -25px;
+}
+
+form.signin .textbox input {
+    background: #1abca6;
+    margin-top: 6px;
+    border-bottom: 1px solid #1abca6;
+    border-left: 1px solid #1abca6;
+    border-right: 1px solid #1abca6;
+    border-top: 1px solid #1abca6;
+    color: #fff;
+    border-radius: 1px 1px 1px 1px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 3px;
+    font-size: 15px;
+    font-family:"Open Sans";
+    padding: 6px 6px 4px;
+    width: 200px;
+}
+
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 30px;
+  color: #CC6600;
+  position: absolute;
+  left:12%;
+  margin-top: 9px;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #CC6600;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #CC6600;
+  }
+}
+
+@-webkit-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #CC6600;
+  }
+}
+
+
+.button {
+    background-color: black;
+    color:#1abca6;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 6px 4px;
+    margin-top: 10px;
+    border: none;
+    font: 12px;
+    font-weight: bold;
+    width: 80px;
+    position: relative;
+    top:85%;
+    left:30%;
+}
+
+.skip {
+	background-color: transparent;
+	display: block;
+	position:relative;
+	left:4%;
+	color:black;
+	width: 200px;
+	letter-spacing:2px;
+}
+
+.button:hover {
+    background: black;
+}
+
+.skip:hover{
+	background: transparent;
 }
