@@ -39,4 +39,18 @@ $(document).ready(function() {
 	$('fieldset.textbox').click(function(){
 		$('.blinking-cursor').fadeOut(300);
 	});
+
+    //if user entered a username, inherit the username to the following pages
+    document.getElementsByTagName("button")[0].onclick = function(){
+        var name = document.getElementById("username").value;
+        alert(name);
+        window.location.assign("link to genre page");
+    };
+
+    //if user decides to play anonymously 
+    document.getElementsByTagName("button")[1].onclick = function(){
+        window.location.assign("link to genre page");
+    };
+
 });
+
