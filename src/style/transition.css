@@ -1,8 +1,22 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+body{
+    background-color: white;
+    font-family:"PT Sans Narrow";
+    font-size:20px;
+    margin-right: 40px;
+    margin-left:40px;
+    margin-bottom:40px;
+    margin-top: 40px;
+    padding-bottom: 30%;
+    border-top: 10px solid #1abca6;
+    border-bottom: 10px solid #1abca6;
+    z-index: 1;
+    position:relative;
+    text-align: center;
+}
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;  /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -17,6 +31,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Modal Content */
 .modal-content {
+    color:#1abca6;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -37,4 +52,25 @@ body {font-family: Arial, Helvetica, sans-serif;}
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.button {
+    background-color: orange; /* color of button */
+    color:#1abca6; /* color of button text */
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 6px 4px;
+    border: none;
+    font: 12px;
+    font-weight: bold;
+    width: 130px;   /* dimension of box */
+    height:40px;
+    position:absolute;
+    top: 85%; /* position at bottom */
+    bottom:0px;
+    left: 45%;  /* center*/
+}
+
+.button:hover {
+    background: black;
 }
