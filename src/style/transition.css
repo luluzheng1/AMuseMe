@@ -1,6 +1,5 @@
 body{
     background-color: white;
-    font-family:"PT Sans Narrow";
     font-size:20px;
     margin-right: 40px;
     margin-left:40px;
@@ -12,6 +11,7 @@ body{
     z-index: 1;
     position:relative;
     text-align: center;
+    color: #CC6600;
 }
 
 /* The Modal (background) */
@@ -31,31 +31,45 @@ body{
 
 /* Modal Content */
 .modal-content {
-    color:#1abca6;
-    background-color: #fefefe;
+    color:#000;
+    background: #1abca6;
     margin: auto;
     padding: 50px;
     border: 1px solid #888;
     width: 80%;
+     border: 2px solid #CC6600;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px;
+    /* Firefox */
+    -webkit-border-radius: 3px;
+    /* Safari, Chrome */;
 }
 
 /* The Close Button */
-#close {
-    color: #aaaaaa;
-    /*float: right;*/
+.close {
+    color: gray;
     font-size: 28px;
     font-weight: bold;
+    background-color: #aaaaaa;
 }
 
-#close:hover,
-#close:focus {
+.continue {
+    color:#1abca6;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: #CC6600;
+}
+
+.continue:hover,
+.continue:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
+
 .button {
-    background-color: orange; /* color of button */
+    background-color: #CC6600; /* color of button */
     color:#1abca6; /* color of button text */
     cursor: pointer;
     display: inline-block;
