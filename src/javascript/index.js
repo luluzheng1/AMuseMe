@@ -44,12 +44,12 @@ $(document).ready(function() {
     document.getElementsByTagName("button")[0].onclick = function(){
         var name = document.getElementById("username").value;
         alert(name);
-        window.location.assign("link to genre page");
+        window.location.assign("genre.html");
     };
 
     //if user decides to play anonymously 
     document.getElementsByTagName("button")[1].onclick = function(){
-        window.location.assign("link to genre page");
+        window.location.assign("genre.html");
     };
 
 });
