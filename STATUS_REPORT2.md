@@ -28,7 +28,7 @@ project.
 
 ## Challenges
 -------------------------------------------------------------------------------
-*   Figuring out how to access user information from other javascript files
+*  	Figuring out how to access user information from other javascript files
 *	Learning how to interact with Heroku and Mongodb
 *	Writing wrapper functions for the Spotify API
 	-	We recognized a potential obstacle that might hinder our progress.
@@ -36,7 +36,7 @@ project.
 	-	We are considering writing wrapper functions that will use certain
 		features offered by Spotify.
 *	Figuring out how to embed audio content on webpage
-*   Researching about copyrights and how royalty-free music/ music in the
+*   	Researching about copyrights and how royalty-free music/ music in the
 	Cretive Domain works
 *	Everything on the server-side
 *	Relearning CSS's cascading property
@@ -47,7 +47,7 @@ project.
 -------------------------------------------------------------------------------
 *	Write js code to interact with our db on Heroku to track statistics and 
 	player information
-*   Design MongoDB strategy and determine which items should be tracked for 
+*   	Design MongoDB strategy and determine which items should be tracked for 
 	use in things such as statistics gathering
 *	Set up database that stores user's history of play and allows the search 
 	for user - connect the login window with the game page
