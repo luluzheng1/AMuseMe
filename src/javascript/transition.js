@@ -12,7 +12,6 @@ var cont = document.getElementById("continue");
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
-    $('myModal').fadeIn('slow');
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -30,7 +29,6 @@ cont.onclick= function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        $(modal).fadeOut(300);
     }
 }
 

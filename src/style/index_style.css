@@ -311,4 +311,19 @@ form.signin .textbox input {
 	background: transparent;
 }
 
+.audio {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
 
+#copyright {
+  font-size: 9px;
+  bottom: 30%;
+}
+
+#disclaimer {
+  border: 1px;
+  padding: 8px;
+  font-size: 5px;
+}
