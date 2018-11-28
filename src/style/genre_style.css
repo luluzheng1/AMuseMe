@@ -7,7 +7,7 @@ h1{
 	position: absolute;
 	top: -40px;
 	left: 12%;
-	font-family:"Open";
+	font-family:"Open Sans";
 	font-weight: bold;
 	letter-spacing:12px;
 	color:#f2570e;
@@ -21,11 +21,3 @@ img {
 .thumbnail:hover {
   transform: scale(1.2);
 }
-
-
-
-
-
-
-
-
