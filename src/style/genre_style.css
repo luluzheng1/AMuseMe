@@ -1,118 +1,25 @@
-body{
-	background-color: white;
-	font-family:"PT Sans Narrow";
-	font-size:20px;
-	margin-right: 40px;
-	margin-left:40px;
-	margin-bottom:40px;
-  margin-top: 90px;
-  padding-top: 30%;
-  padding-bottom: 5%;
-
-  border-top: 10px solid #1abca6;
-	border-bottom: 10px solid #1abca6;
-  z-index: 1;
-  position:relative;
-}
-
-/**the green inner border**/
-body:after {
-  	content: "";
-  	display: block;
-  	position: absolute;
-  	top: 4%;
-  	left: 0px;
-  	border: solid 2px #1abca6;
-  	width: 1196px;
-  	min-height: 91%;
-  	padding-bottom: -10px;  
-  	z-index: -10;
-}
-
-body:before {
-  	content: "";
-  	display: block;
-  	position: absolute;
-  	top: 21px;
-  	left: 0px;
-  	border: solid 2px white;
-  	width: 1196px;
-  	min-height: 91%;
-  	padding-bottom: -2px;  
-  	z-index: 10;
+body {
+    background-color: #80D8E4;
 }
 
 h1{
 	font-size:100px;
 	position: absolute;
-	top: -32px;
-	left: 30%;
+	top: -40px;
+	left: 10%;
 	font-family:"Trebuchet MS";
-	font-weight:bold;
+	font-weight: bold;
 	letter-spacing:12px;
 	color:#f2570e;
-
 }
 
-h2{
-	font-size:40px;
-	position: absolute;
-	padding-top: 2%;
-	top: 62%;
-	left: 26%;
-	font-family:"Trebuchet MS";
-	font-weight:bold;
-	letter-spacing:6px;
-	color:#f2570e;
+img {
+  padding: 50px;
+  border-radius: 30%;
 }
 
-h3{
-	font-size:23px;
-	position: absolute;
-	top: 80%;
-	left: 33%;
-	font-family:"Open Sans";
-	font-style: italic;
-	font-weight:normal;
-	letter-spacing:7px;
-	color:#f2570e;
-}
-
-img{
-	margin-top:10px;
-	position: absolute;
-	top: 28%;
-	left: 40%;
-}
-
-
-a:link{
-	text-decoration:none;
-	font-weight: bold;
-	color:#f2570e;
-	text-align:center;
-	letter-spacing:5px;
-}
-
-a:visited{
-	color:#CC6600;
-
-}
-
-.popup{
-	position: absolute;
-	top:110%;
-	left: 39%;
-	-webkit-animation: 1s blink step-end infinite;
-  	-moz-animation: 1s blink step-end infinite;
-  	animation: 1s blink step-end infinite;
-}
-
-.changecolor{
-	color:#1abca6;
-	-webkit-animation: 1s blinkBl step-end infinite;
-  	-moz-animation: 1s blinkBl step-end infinite;
-  	animation: 1s blinkBl step-end infinite;
+.thumbnail:hover {
+  transform: scale(1.2);
 }
 
 @keyframes blinkBl {
@@ -196,20 +103,6 @@ img.btn_close {
 	position: relative;
 	top:-18px;
 	left:-10px;
-
-}
-
-fieldset {
-    border: none;
-}
-
-form.signin .textbox label {
-    display: block;
-    padding-bottom: 4px;
-}
-
-form.signin .textbox span {
-    display: block;
 }
 
 form.signin p, form.signin span {
@@ -309,21 +202,4 @@ form.signin .textbox input {
 
 .skip:hover{
 	background: transparent;
-}
-
-.audio {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-#copyright {
-  font-size: 9px;
-  bottom: 30%;
-}
-
-#disclaimer {
-  border: 1px;
-  padding: 8px;
-  font-size: 5px;
 }
