@@ -42,7 +42,8 @@ $(document).ready(function() {
 
     //if user entered a username, inherit the username to the following pages
     document.getElementsByTagName("button")[0].onclick = function(){
-        var name = document.getElementById("username").value;
+        name = document.getElementById("username").value;
+        name = name.replace(/[^\w\s]/gi, ''); 
         alert(name);
         window.location.assign("genre.html");
     };
