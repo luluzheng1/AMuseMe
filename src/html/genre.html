@@ -3,21 +3,25 @@
 
 <head>
 	<title> Pick Your Genre </title>
-	<meta charset ="utf-8" name="viewport" content = "width=device-width, initial-scale=1, user-scalable=0" />
+	<meta charset="utf-8"/>
 	<link href="../style/genre_style.css" rel="stylesheet" />
+	<script src="../javascript/genre.js"></script>
 </head>
 
 <body>
 	<h1> Pick your genre! </h1>
-	<br>
-	<a href="play.html"><img id="country" src = "../assets/images/country.jpg" title="country" alt="country" class="thumbnail"></a> 
-	<a href="play.html"><img id="hiphop" src = "../assets/images/hiphop.jpg"  title="hiphop" alt="hiphop" class="thumbnail"></a> 
-	<a href="play.html"><img id="classic" src = "../assets/images/disney.jpg"  title="classic" alt="classic" class="thumbnail"></a> 
-	<br>
-	<a href="play.html"><img id="pop" src = "../assets/images/pop.jpg" title="pop" alt="pop" class="thumbnail"></a> 
-	<a href="play.html"><img id="rock" src = "../assets/images/rock.jpg"  title="rock" alt="rock" class="thumbnail"></a> 
-	<a href="play.html"><img id="shuffle" src = "../assets/images/shuffle.png" title="shuffle" alt="shuffle" class="thumbnail"></a> 
-
+	<br><br><br><br><br><br><br>
+	<span id="myspan"></span>
+	<form>
+		<!--All audio files licensed under creative commons-->
+		<a href="play.html"><img src = "../assets/images/country.jpg" width=300 height = 200 title="country" alt="country" class="thumbnail" onMouseOver="sound('../assets/audio/country.mp3')" onMouseOut="stopSound('../assets/audio/placeHolder.mp3')"></a> 
+		<a href="play.html"><img src = "../assets/images/hiphop.jpg" width=300 height = 200 title="hiphop" alt="hiphop" class="thumbnail" onMouseOver="sound('../assets/audio/hiphop.mp3')" onMouseOut="stopSound('../assets/audio/placeHolder.mp3')"></a> 
+		<a href="play.html"><img src = "../assets/images/classical.jpg" width=300 height = 200 title="classical" alt="classical" class="thumbnail" onMouseOver="sound('../assets/audio/classical.mp3')" onMouseOut="stopSound('../assets/audio/placeHolder.mp3')"></a> <br>
+		<a href="play.html"><img src = "../assets/images/pop.jpg" width=300 height = 200 title="pop" alt="pop" class="thumbnail" onMouseOver="sound('../assets/audio/pop.mp3')" onMouseOut="stopSound('../assets/audio/placeHolder.mp3')"></a> 
+		<a href="play.html"><img src = "../assets/images/rock.jpg" width=300 height = 200 title="rock" alt="rock" class="thumbnail" onMouseOver="sound('../assets/audio/rock.mp3')" onMouseOut="stopSound('../assets/audio/placeHolder.mp3')"></a> 
+		<a href="play.html"><img src = "../assets/images/shuffle.png" width=300 height = 200 title="shuffle" alt="shuffle" class="thumbnail" onMouseOver="sound('../assets/audio/mystery.mp3')" onMouseOut="stopSound('../assets/audio/placeHolder.mp3')"></a> 
+	</form>
+	</span>
 	
 </body>
 

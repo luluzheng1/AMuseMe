@@ -36,6 +36,8 @@ $(document).ready(function() {
 		$('.blinking-cursor').fadeOut(300);
 	});
 
+
+
     //if user entered a username, inherit the username to the following pages
     document.getElementsByTagName("button")[0].onclick = function(){
         name = document.getElementById("username").value;
