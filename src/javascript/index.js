@@ -1,18 +1,15 @@
 
-$(document).ready(function() {
-		$('a.popup').click(function() {
-    
-         //Getting the variable's value from a link 
-    	var loginBox = $(this).attr('href');
 
-    	//Fade in the Popup
-    	$(loginBox).fadeIn(300);
-    
+$(document).ready(function() {
+		
+        $('a.popup').click(function() {
+            $('.login-popup').fadeIn(300);
+ 
     	//Set the center alignment padding + border see css style
-    	var popMargTop = ($(loginBox).height() + 24) / 2; 
-    	var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    	var popMargTop = ($('.login-popup').height() + 24) / 2; 
+    	var popMargLeft = ($('.login-popup').width() + 24) / 2; 
     
-    	$(loginBox).css({ 
+    	$('.login-popup').css({ 
         'margin-top' : -popMargTop,
         'margin-left' : -popMargLeft
     	});
@@ -27,7 +24,6 @@ $(document).ready(function() {
 	});
 
 
-
 	// When clicking on the button close, close the popup window
 	$('a.close, #mask').live('click', function() { 
   		$('#mask , .login-popup').fadeOut(300 , function() {
@@ -39,6 +35,8 @@ $(document).ready(function() {
 	$('fieldset.textbox').click(function(){
 		$('.blinking-cursor').fadeOut(300);
 	});
+
+
 
     //if user entered a username, inherit the username to the following pages
     document.getElementsByTagName("button")[0].onclick = function(){

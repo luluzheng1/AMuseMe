@@ -20,7 +20,7 @@ var this_player = {
 	thename: name,
 	thescore: score,
 	nwrong: num_wrong
-}
+};
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
