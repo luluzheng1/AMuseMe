@@ -21,6 +21,12 @@ change.onload = function() {
  
 }
 
+// $(document).ready(function() {
+//     player.initList();
+// })
+
+var start = document.getElementById('strBtn');
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -76,7 +82,9 @@ close.onclick = function() {
 
 cont.onclick= function() {
 	modal.style.display = "none";
-	window.location.reload() ;
+	//window.location.reload();
+    player.next();
+    changeAudioElement();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -84,6 +92,9 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-       changeAudioElement();
+}
+
+start.onclick = function() {
+    changeAudioElement();
 }
 

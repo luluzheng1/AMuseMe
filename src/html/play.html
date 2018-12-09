@@ -5,11 +5,17 @@
 	<meta charset ="utf-8" name="viewport" content = "width=device-width, initial-scale=1" />
 	<link href="../style/transition.css" rel="stylesheet" />
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="../javascript/player.js"></script> 
 </head>
 
-<body>
+<body id="change">
 	<h1> Now Playing... </h1>
 	<h3> Can you guess the song? </h3>
+	<button id="strBtn" class="buton">Start</button>
+	<audio id="audio" controls="controls">
+  	<source id="audioSource" src=""></source>
+  	Your browser does not support the audio format.
+	</audio>
 	<div>Answer:
     <input id="myanswer" name="input" value="" type="text" autocomplete="on" />
     </div>
