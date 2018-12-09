@@ -3,8 +3,8 @@ body{
 	background-color: white;
 	margin-left:5px;
   margin-right: 5px;
-	margin-bottom:8%;
-  margin-top: 5%;
+	margin-bottom:8vh;
+  margin-top: 22vh;
   padding-top: 25%;
   padding-bottom: 15%;
   position: relative;
@@ -80,7 +80,7 @@ h3{
 	font-family:"Open Sans";
   font-weight: normal;
 	font-style: italic;
-	letter-spacing:0.2em;
+	letter-spacing:0.15em;
 	color:#f2570e;
 }
 
@@ -89,7 +89,7 @@ h4{
   font-family:"PT Sans Narrow";
   position: absolute;
   left:38%;
-  margin-top:18vw;
+  margin-top:20vw;
   letter-spacing:0.3em;
 }
 
@@ -114,6 +114,13 @@ img{
   max-width: 100%;
 }
 
+#copyright{
+  position: absolute;
+  top: 110%;
+  left: 27vw;
+  font-size: 1vw;
+  font-family:"PT Sans Narrow";
+}
 
 .popup{
   potision:absolute;

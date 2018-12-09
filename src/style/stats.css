@@ -1,0 +1,21 @@
+body{
+	font-family:"Trebuchet MS";
+	margin-bottom:8vh;
+  	margin-top: 8vh;
+  	margin-left:5px;
+  	margin-right: 5px;
+  	position:relative;
+}
+
+h1{
+	font-size:6vw;
+	position: relative;
+	left:33vw;
+	font-weight:bold;
+	letter-spacing:1.3vw;
+	color:#f2570e;
+}
+
+.scoretable{
+	position:absolute;
+}
