@@ -1,18 +1,15 @@
 
-$(document).ready(function() {
-		$('a.popup').click(function() {
-    
-         //Getting the variable's value from a link 
-    	var loginBox = $(this).attr('href');
 
-    	//Fade in the Popup
-    	$(loginBox).fadeIn(300);
-    
+$(document).ready(function() {
+		
+        $('a.popup').click(function() {
+            $('.login-popup').fadeIn(300);
+ 
     	//Set the center alignment padding + border see css style
-    	var popMargTop = ($(loginBox).height() + 24) / 2; 
-    	var popMargLeft = ($(loginBox).width() + 24) / 2; 
+    	var popMargTop = ($('.login-popup').height() + 24) / 2; 
+    	var popMargLeft = ($('.login-popup').width() + 24) / 2; 
     
-    	$(loginBox).css({ 
+    	$('.login-popup').css({ 
         'margin-top' : -popMargTop,
         'margin-left' : -popMargLeft
     	});
@@ -27,7 +24,6 @@ $(document).ready(function() {
 	});
 
 
-
 	// When clicking on the button close, close the popup window
 	$('a.close, #mask').live('click', function() { 
   		$('#mask , .login-popup').fadeOut(300 , function() {
@@ -40,16 +36,19 @@ $(document).ready(function() {
 		$('.blinking-cursor').fadeOut(300);
 	});
 
+
+
     //if user entered a username, inherit the username to the following pages
     document.getElementsByTagName("button")[0].onclick = function(){
-        var name = document.getElementById("username").value;
+        name = document.getElementById("username").value;
+        name = name.replace(/[^\w\s]/gi, ''); 
         alert(name);
-        window.location.assign("link to genre page");
+        window.location.assign("genre.html");
     };
 
     //if user decides to play anonymously 
     document.getElementsByTagName("button")[1].onclick = function(){
-        window.location.assign("link to genre page");
+        window.location.assign("genre.html");
     };
 
 });

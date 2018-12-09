@@ -1,18 +1,16 @@
+
 body{
 	background-color: white;
-	font-family:"PT Sans Narrow";
-	font-size:20px;
-	margin-right: 40px;
-	margin-left:40px;
-	margin-bottom:40px;
-  margin-top: 90px;
-  padding-top: 30%;
-  padding-bottom: 5%;
-
+	margin-left:5px;
+  margin-right: 5px;
+	margin-bottom:8%;
+  margin-top: 5%;
+  padding-top: 25%;
+  padding-bottom: 15%;
+  position: relative;
   border-top: 10px solid #1abca6;
 	border-bottom: 10px solid #1abca6;
   z-index: 1;
-  position:relative;
 }
 
 /**the green inner border**/
@@ -20,11 +18,10 @@ body:after {
   	content: "";
   	display: block;
   	position: absolute;
-  	top: 4%;
-  	left: 0px;
+  	top: 2.6%;
   	border: solid 2px #1abca6;
-  	width: 1196px;
-  	min-height: 91%;
+  	width: 99.5%;
+  	min-height: 94%;
   	padding-bottom: -10px;  
   	z-index: -10;
 }
@@ -33,76 +30,95 @@ body:before {
   	content: "";
   	display: block;
   	position: absolute;
-  	top: 21px;
-  	left: 0px;
+  	top: 3.1%;
   	border: solid 2px white;
-  	width: 1196px;
-  	min-height: 91%;
+  	width: 99.5%;
+  	min-height: 94%;
   	padding-bottom: -2px;  
   	z-index: 10;
 }
 
 h1{
-	font-size:100px;
+	font-size:8vw;
 	position: absolute;
-	top: -32px;
-	left: 30%;
+  top:-5%;
+	left:29%;
+  width: 90vw;
 	font-family:"Trebuchet MS";
 	font-weight:bold;
-	letter-spacing:12px;
+	letter-spacing:1.3vw;
 	color:#f2570e;
-
 }
 
+
+
 h2{
-	font-size:40px;
+	font-size:2.5vw;
 	position: absolute;
 	padding-top: 2%;
-	top: 62%;
-	left: 26%;
+	top: 63%;
+	left: 33%;
 	font-family:"Trebuchet MS";
 	font-weight:bold;
-	letter-spacing:6px;
+	letter-spacing:0.1em;
 	color:#f2570e;
+}
+
+.overlap{
+  font-size: 2.5vw;
+  color:#1abca6;
+  position: absolute;
+  top:63%;
+  left:33.5%;
 }
 
 h3{
-	font-size:23px;
+	font-size:2vw;
 	position: absolute;
-	top: 80%;
-	left: 33%;
+	top: 79%;
+	left: 34%;
 	font-family:"Open Sans";
+  font-weight: normal;
 	font-style: italic;
-	font-weight:normal;
-	letter-spacing:7px;
+	letter-spacing:0.2em;
 	color:#f2570e;
+}
+
+h4{
+  font-size:1.7vw;
+  font-family:"PT Sans Narrow";
+  position: absolute;
+  left:38%;
+  margin-top:18vw;
+  letter-spacing:0.3em;
+}
+
+
+a:link{
+  text-decoration:none;
+  font-weight: bold;
+  color:#f2570e;
+}
+
+a:visited{
+  color:#CC6600;
 }
 
 img{
 	margin-top:10px;
 	position: absolute;
-	top: 28%;
-	left: 40%;
+	top: 30%;
+	left: 41%;
+  height: 15vw;
+  width: 15vw;
+  max-width: 100%;
 }
 
-
-a:link{
-	text-decoration:none;
-	font-weight: bold;
-	color:#f2570e;
-	text-align:center;
-	letter-spacing:5px;
-}
-
-a:visited{
-	color:#CC6600;
-
-}
 
 .popup{
-	position: absolute;
+  potision:absolute;
 	top:110%;
-	left: 39%;
+	left: 37%;
 	-webkit-animation: 1s blink step-end infinite;
   	-moz-animation: 1s blink step-end infinite;
   	animation: 1s blink step-end infinite;
@@ -143,18 +159,6 @@ a:visited{
 }
 
 
-
-.overlap{
-	color:#1abca6;
-	position: absolute;
-	top:62%;
-	left:318px;
-}
-
-.tobold{
-	font-weight: bolder;
-}
-
 /* Mask for background, by default is not display */
 #mask {
     display: none;
@@ -184,7 +188,7 @@ a:visited{
     left: 50%;
     z-index: 99999;
     /* Safari, Chrome */
-	border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px;
     /* Firefox */
         -webkit-border-radius: 3px;
@@ -192,10 +196,12 @@ a:visited{
 }
 
 img.btn_close {
-	max-width: 15%;
-	position: relative;
-	top:-18px;
-	left:-10px;
+  max-width: 15%;
+  height:20%;
+  width:20%;
+  position: relative;
+  top:-18px;
+  left:-10px;
 
 }
 
@@ -239,11 +245,11 @@ form.signin .textbox input {
 
 .blinking-cursor {
   font-weight: 100;
-  font-size: 30px;
+  font-size: 40px;
   color: #CC6600;
   position: absolute;
-  left:12%;
-  margin-top: 9px;
+  left:11%;
+  margin-top: 13px;
   -webkit-animation: 1s blink step-end infinite;
   -moz-animation: 1s blink step-end infinite;
   animation: 1s blink step-end infinite;
@@ -294,13 +300,13 @@ form.signin .textbox input {
 }
 
 .skip {
-	background-color: transparent;
-	display: block;
-	position:relative;
-	left:4%;
-	color:black;
-	width: 200px;
-	letter-spacing:2px;
+  background-color: transparent;
+  display: block;
+  position:relative;
+  left:4%;
+  color:black;
+  width: 200px;
+  letter-spacing:2px;
 }
 
 .button:hover {
@@ -308,5 +314,23 @@ form.signin .textbox input {
 }
 
 .skip:hover{
-	background: transparent;
+  background: transparent;
 }
+
+.audio {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+#copyright {
+  font-size: 9px;
+  bottom: 30%;
+}
+
+#disclaimer {
+  border: 1px;
+  padding: 8px;
+  font-size: 5px;
+}
+
