@@ -1,3 +1,26 @@
+//changes audio
+var change = document.getElementById('change');
+
+var player = new spotifyPlayer('pop', 10);
+
+function changeAudioElement(){
+  //e.preventDefault();
+
+  //var elm = e.target;
+  var audio = document.getElementById('audio');
+
+  var source = document.getElementById('audioSource');
+  source.src = player.getPlayerURL();
+
+  audio.load(); //call this to just preload the audio without playing
+  audio.play(); //call this to play the song right away
+}
+
+change.onload = function() {
+    player.initList();
+ 
+}
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -61,5 +84,6 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+       changeAudioElement();
 }
 
