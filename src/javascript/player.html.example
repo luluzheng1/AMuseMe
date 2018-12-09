@@ -16,6 +16,10 @@ audio {
 
 <body> 
     <audio controls id="player"></audio>
+    <form id="Form">
+        <input type="text" value="Name" id="user_answer" />
+    </form>
+    <button id="check">Check</button>
     <button id="next">Next</button>
 </body>
 
