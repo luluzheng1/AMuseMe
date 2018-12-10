@@ -38,16 +38,18 @@ spotifyPlayer.prototype.initList = function() {
                 if (eachTrack.preview_url !== null) {
                     let currTrack = {
                         album: eachTrack.album || 'Unknown',
-                        artists: eachTrack.artists || 'Unknown',
+                        artists: eachTrack.artists[0].name || 'Unknown',
                         name: eachTrack.name,
                         preview_url: eachTrack.preview_url,
                         id: eachTrack.id
                     }
+                    //console.log(eachTrack.artists[0].name);
                     self.list.push(currTrack);
                 }
             }
             self.numberTracks = self.list.length;
-            console.log(self.list);
+            //console.log(self.list);
+
             deferred.resolve();
         });
     });
@@ -70,6 +72,12 @@ spotifyPlayer.prototype.getSongName = function() {
     }
 }
 
+spotifyPlayer.prototype.getArtist = function() {
+    if(this.counter < this.numberTracks) {
+        return this.list[this.counter].artists;
+        console.log(this.list[this.counter].artists);
+    }
+}
 /*
  *  return a url to the song
  */
@@ -85,29 +93,50 @@ spotifyPlayer.prototype.getPlayerURL = function() {
 };
 
 /*
- *  NOT IMPLEMENTED: checkAnswer function
+ *  validate userinput function
  */
 spotifyPlayer.prototype.checkAnswer = function (answer) {
-    var key_words = (this.list[this.counter].name).split(/\W/); // split by non-word chars
-    var ans_words = answer.split(/\W/); // split by non-word chars
+    var word = (this.list[this.counter].name).replace(/ *\([^)]*\) */g, "");
+    var sanitized_word = word.replace(/[^\w\s]/gi, ''); //no non-word char
+    var sanitized_key_words = sanitized_word.split("\\s+");
+    var key_words = word.split("\\s+"); // split by space
+    var ans_words = answer.split("\\s+"); // split by non-word chars
+    // console.log("s_key_words = " + sanitized_key_words);
+    // console.log("key_words = " + key_words);
+    // console.log("ans_words =" + ans_words);
     var hint_words = [];
     var correct = true;
 
     for (var i = 0; i < key_words.length; i++) {
         correct &= (ans_words[i] && key_words[i].toLowerCase() == ans_words[i].toLowerCase());
-        hint_words[i] = "__"
+        hint_words[i] = "__";
     } 
+
+    if(!correct) {
+        console.log("in loop");
+        for (var i = 0; i < key_words.length; i++) {
+            // console.log("sanitizied" + sanitized_key_words[i].toLowerCase());
+            // console.log("ans" + ans_words[i].toLowerCase());
+            if(sanitized_key_words[i].toLowerCase() == ans_words[i].toLowerCase()) {
+                correct = true;
+                 //console.log(correct);
+            }
+            else
+                correct = false;
+           
+        }
+    }
 
     for (var ans of ans_words) {
         for (var j = 0; j < key_words.length; j++) {
-            if (key_words[j].toLowerCase() == ans.toLowerCase()) {
+            if (key_words[j].toLowerCase() == ans.toLowerCase() || 
+                sanitized_key_words[j].toLowerCase() == ans.toLowerCase()) {
                 hint_words[j] = key_words[j];
             }
         }
     }
 
     var hint_string = hint_words.join(' ');
-
     return {'isCorrect': correct, 'hint': hint_string};
 
 };
