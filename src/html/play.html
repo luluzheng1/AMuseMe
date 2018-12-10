@@ -9,15 +9,16 @@
 </head>
 
 <body id="change">
-	<h1> Now Playing... </h1>
-	<h3> Can you guess the song? </h3>
-	<button id="strBtn" class="buton">Start</button>
+	<h3> Click Begin to Play </h3>
+	<button id="strBtn">Begin</button>
+	<button id="stpBtn">Play/Pause</button>
+	<div id="score">0</div>
 	<audio id="audio" controls="controls">
   	<source id="audioSource" src=""></source>
   	Your browser does not support the audio format.
 	</audio>
 	<div>Answer:
-    <input id="myanswer" name="input" value="" type="text" autocomplete="on" />
+    <input id="myanswer" name="input" value="" type="text"/>
     </div>
 	<!-- Opens the Pop Up, should generate response/ score based on user's answer -->
 	<button id="myBtn" class="button">Enter</button>
@@ -25,7 +26,7 @@
 	<div id="myModal" class="modal">
 		<!-- Set Modal content -->
 		<div class="modal-content" id="content">
-			<p>Implement validate answer function</p>
+			<p id="answer"> </p>
 			<button class ="close" id="close">QUIT GAME</button>
 			<button class ="continue" id="continue">CONTINUE</button>
 		</div>
