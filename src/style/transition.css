@@ -88,3 +88,8 @@ body{
 .button:hover {
     background: black;
 }
+
+audio {
+   display:none;
+}
+

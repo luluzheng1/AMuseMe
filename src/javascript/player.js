@@ -14,6 +14,7 @@ function spotifyPlayer(genre, number) {
  */
 spotifyPlayer.prototype.initList = function() {
     var self = this;
+    var deferred = new $.Deferred();
     this.getCredential()
     .done(function(){
         console.log('Bearer ' + self.accessToken);
@@ -47,8 +48,11 @@ spotifyPlayer.prototype.initList = function() {
             }
             self.numberTracks = self.list.length;
             console.log(self.list);
+            deferred.resolve();
         });
     });
+
+    return deferred;
 };
 
 /*
@@ -59,6 +63,12 @@ spotifyPlayer.prototype.next = function() {
     this.counter++; 
     
 };
+
+spotifyPlayer.prototype.getSongName = function() {
+    if(this.counter < this.numberTracks) {
+        return this.list[this.counter].name;
+    }
+}
 
 /*
  *  return a url to the song
@@ -77,9 +87,29 @@ spotifyPlayer.prototype.getPlayerURL = function() {
 /*
  *  NOT IMPLEMENTED: checkAnswer function
  */
-spotifyPlayer.prototype.checkAnswer = function () {
-    console.log(this.list[this.counter].album);
-    console.log(this.list[this.counter].artists);
+spotifyPlayer.prototype.checkAnswer = function (answer) {
+    var key_words = (this.list[this.counter].name).split(/\W/); // split by non-word chars
+    var ans_words = answer.split(/\W/); // split by non-word chars
+    var hint_words = [];
+    var correct = true;
+
+    for (var i = 0; i < key_words.length; i++) {
+        correct &= (ans_words[i] && key_words[i].toLowerCase() == ans_words[i].toLowerCase());
+        hint_words[i] = "__"
+    } 
+
+    for (var ans of ans_words) {
+        for (var j = 0; j < key_words.length; j++) {
+            if (key_words[j].toLowerCase() == ans.toLowerCase()) {
+                hint_words[j] = key_words[j];
+            }
+        }
+    }
+
+    var hint_string = hint_words.join(' ');
+
+    return {'isCorrect': correct, 'hint': hint_string};
+
 };
 
 spotifyPlayer.prototype.getCredential = function () {
@@ -100,4 +130,3 @@ spotifyPlayer.prototype.getCredential = function () {
 
     return deferred;
 }
-

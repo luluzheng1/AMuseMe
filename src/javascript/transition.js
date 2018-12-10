@@ -3,6 +3,7 @@ var change = document.getElementById('change');
 
 var player = new spotifyPlayer('pop', 10);
 
+var isPlaying = false;
 function changeAudioElement(){
   //e.preventDefault();
 
@@ -18,7 +19,6 @@ function changeAudioElement(){
 
 change.onload = function() {
     player.initList();
- 
 }
 
 // $(document).ready(function() {
@@ -26,7 +26,7 @@ change.onload = function() {
 // })
 
 var start = document.getElementById('strBtn');
-
+var stop = document.getElementById('stpBtn');
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -53,24 +53,29 @@ var this_player = {
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
-
+    audio.pause();
 	userinput = document.getElementById("myanswer").value;
 	userinput = userinput.replace(/[^\w\s]/gi, ''); 
 
-    alert(userinput);
+    //alert(userinput);
 
     modal.style.display = "block";
-
-    if(userinput == SONGNAME)
+    let result = player.checkAnswer(userinput);
+    console.log(result.isCorrect);
+    console.log(result.hint);
+    if(result.isCorrect)
     {
-    	this_player.thescore++;
+        let content = document.getElementById("answer");
+    	content.innerHTML = "<h1>Correct!</h1>";
+        this_player.thescore++;
     }
-
     else
     {
+        let content = document.getElementById("answer");
+        var songname = player.getSongName();
+        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>";
     	this_player.nwrong++;
     }
-
 
 }
 
@@ -98,3 +103,22 @@ start.onclick = function() {
     changeAudioElement();
 }
 
+var audio = document.getElementById('audio');
+stop.onclick = function() {
+    togglePlay();
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+};
+
+audio.onplaying = function() {
+  isPlaying = true;
+};
+audio.onpause = function() {
+  isPlaying = false;
+};
