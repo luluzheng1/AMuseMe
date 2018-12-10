@@ -11,9 +11,23 @@ var cont = document.getElementById("continue");
 
 var userinput = "";
 
-var score = 0;
 
-var num_wrong = 0;
+// Try to read the score from localStorage
+// if not there then initalize it to 0
+// NOTE; we need to reset this to 0 somewhere when we are done with score
+var score = localStorage.getItem("score");
+if (!score){
+    score = 0;
+    localStorage.setItem("score", score );
+}
+
+var num_wrong = localStorage.getItem("num_wrong");
+if (!num_wrong){
+    num_wrong = 0;
+    localStorage.setItem("num_wrong", num_wrong);
+}
+
+
 
 //player object; name is inherited from index.js
 var this_player = {
@@ -35,18 +49,25 @@ btn.onclick = function() {
     if(userinput == SONGNAME)
     {
     	this_player.thescore++;
+         //Save new score in localStorage
+        localStorage.score = this_player.thescore;
+    
     }
 
     else
     {
     	this_player.nwrong++;
+        //Save number wrong in localStorage
+        localStorage.num_wrong = this_player.nwrong;
     }
-
-
 }
 
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
+    //code will be added here to submit to database
+    //reset score so for next round it restarts at 0
+    localStorage.score = 0;
+    localStorage.num_wrong = 0;
     modal.style.display = "none";
     window.location.assign("homepage.html");
 }
