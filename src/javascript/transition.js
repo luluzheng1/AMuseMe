@@ -107,7 +107,6 @@ var this_player = {
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     audio.pause();
-
     userinput = document.getElementById("myanswer").value;
 
     //alert(userinput);
@@ -205,19 +204,21 @@ stay.onclick=function() {
 start.onclick = function() {
     changeAudioElement();
     start.style.visibility = "hidden";
-
+    hintcount = 0;
 }
 
 hint.onclick = function() {
+      hintcount++;
       audio.pause();
       userinput = document.getElementById("myanswer").value;
       let result = player.checkAnswer(userinput);
-     
       hintmodal.style.display = "block";
       let hintcontent = document.getElementById("hintanswer");
       var songname = result.hint;
-      hintcontent.innerHTML = "<h1>Hint: " + songname + "</h1>";
-
+      if (hintcount > 3)
+        hintcontent.innerHTML = "<h1>No more hints!</h1>";
+      else
+        hintcontent.innerHTML = "<h1>Hint: " + songname + "</h1>";
 }
 
 var audio = document.getElementById('audio');
