@@ -3,7 +3,15 @@
 var change = document.getElementById('change');
 var genreForRound = localStorage.getItem('genre');
 console.log(genreForRound);
-var player = new spotifyPlayer(genreForRound, 10);
+var genres = ["hip-hop", "pop", "classical", "country", "rock"];
+if(genreForRound == "shuffle")
+{
+    var rand = genres[Math.floor(Math.random() * genres.length)];
+    var player = new spotifyPlayer(rand, 10);
+    console.log(rand);
+}
+else
+    var player = new spotifyPlayer(rand, 10);
 
 var isPlaying = false;
 function changeAudioElement(){
