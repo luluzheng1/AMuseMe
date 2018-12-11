@@ -1,3 +1,33 @@
+//changes audio
+var change = document.getElementById('change');
+var genreForRound = localStorage.getItem('genre');
+console.log(genreForRound);
+var player = new spotifyPlayer(genreForRound, 10);
+
+var isPlaying = false;
+function changeAudioElement(){
+  //e.preventDefault();
+
+  //var elm = e.target;
+  var audio = document.getElementById('audio');
+
+  var source = document.getElementById('audioSource');
+  source.src = player.getPlayerURL();
+
+  audio.load(); //call this to just preload the audio without playing
+  audio.play(); //call this to play the song right away
+}
+
+change.onload = function() {
+    player.initList();
+}
+
+// $(document).ready(function() {
+//     player.initList();
+// })
+
+var start = document.getElementById('strBtn');
+var stop = document.getElementById('stpBtn');
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -11,9 +41,35 @@ var cont = document.getElementById("continue");
 
 var userinput = "";
 
-var score = 0;
+// Try to read the score from localStorage
+// if not there then initalize it to 0
+// NOTE; we need to reset this to 0 somewhere when we are done with score
+var score = localStorage.getItem("score");
+if (!score){
+    score = 0;
+    localStorage.setItem("score", score );
+}
 
-var num_wrong = 0;
+var num_wrong = localStorage.getItem("num_wrong");
+if (!num_wrong){
+    num_wrong = 0;
+    localStorage.setItem("num_wrong", num_wrong);
+}
+
+// Try to read the score from localStorage
+// if not there then initalize it to 0
+// NOTE; we need to reset this to 0 somewhere when we are done with score
+var score = localStorage.getItem("score");
+if (!score){
+    score = 0;
+    localStorage.setItem("score", score );
+}
+
+var num_wrong = localStorage.getItem("num_wrong");
+if (!num_wrong){
+    num_wrong = 0;
+    localStorage.setItem("num_wrong", num_wrong);
+}
 
 //player object; name is inherited from index.js
 var this_player = {
@@ -24,36 +80,56 @@ var this_player = {
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
+    audio.pause();
 
 	userinput = document.getElementById("myanswer").value;
-	userinput = userinput.replace(/[^\w\s]/gi, ''); 
-
-    alert(userinput);
+    //alert(userinput);
 
     modal.style.display = "block";
-
-    if(userinput == SONGNAME)
+    let result = player.checkAnswer(userinput);
+    console.log(result.isCorrect);
+    console.log(result.hint);
+    if(result.isCorrect)
     {
-    	this_player.thescore++;
-    }
+        let content = document.getElementById("answer");
+    	content.innerHTML = "<h1>Correct! </h1>" + "<h3> " + player.getSongName() + " by " + player.getArtist() + "</h3>";
+        this_player.thescore++;
+        (document.getElementById("score")).innerHTML = this_player.thescore;
+         //Save new score in localStorage
 
+    //modal.style.display = "block";
+    SONGNAME = "test1";
     else
     {
-    	this_player.nwrong++;
+        let content = document.getElementById("answer");
+        var songname = player.getSongName();
+        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + "by " + player.getArtist() + "</h3>";
+        this_player.nwrong++;
+
+        //Save number wrong in localStorage
+        localStorage.num_wrong = this_player.nwrong;
     }
-
-
 }
 
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
-    modal.style.display = "none";
-    window.location.assign("homepage.html");
+    localStorage.score = 0;
+    localStorage.num_wrong = 0;
+
+    //code will be added here to submit to database
+    //reset score so for next round it restarts at 0
+    localStorage.score = 0;
+    localStorage.num_wrong = 0;
+
+    //modal.style.display = "none";
+    //window.location.assign("/");
 }
 
 cont.onclick= function() {
 	modal.style.display = "none";
-	window.location.reload() ;
+	//window.location.reload();
+    player.next();
+    changeAudioElement();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -63,3 +139,26 @@ window.onclick = function(event) {
     }
 }
 
+start.onclick = function() {
+    changeAudioElement();
+}
+
+var audio = document.getElementById('audio');
+stop.onclick = function() {
+    togglePlay();
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+};
+
+audio.onplaying = function() {
+  isPlaying = true;
+};
+audio.onpause = function() {
+  isPlaying = false;
+};

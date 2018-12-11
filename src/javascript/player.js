@@ -38,16 +38,16 @@ spotifyPlayer.prototype.initList = function() {
                 if (eachTrack.preview_url !== null) {
                     let currTrack = {
                         album: eachTrack.album || 'Unknown',
-                        artists: eachTrack.artists || 'Unknown',
+                        artists: eachTrack.artists[0].name || 'Unknown',
                         name: eachTrack.name,
                         preview_url: eachTrack.preview_url,
                         id: eachTrack.id
                     }
+                    //console.log(eachTrack.artists[0].name);
                     self.list.push(currTrack);
                 }
             }
             self.numberTracks = self.list.length;
-            console.log(self.list);
             deferred.resolve();
         });
     });
@@ -64,6 +64,18 @@ spotifyPlayer.prototype.next = function() {
     
 };
 
+spotifyPlayer.prototype.getSongName = function() {
+    if(this.counter < this.numberTracks) {
+        return this.list[this.counter].name;
+    }
+}
+
+spotifyPlayer.prototype.getArtist = function() {
+    if(this.counter < this.numberTracks) {
+        return this.list[this.counter].artists;
+        console.log(this.list[this.counter].artists);
+    }
+}
 /*
  *  return a url to the song
  */
@@ -79,11 +91,11 @@ spotifyPlayer.prototype.getPlayerURL = function() {
 };
 
 /*
- *  NOT IMPLEMENTED: checkAnswer function
+ *  validate userinput function
  */
 spotifyPlayer.prototype.checkAnswer = function (answer) {
-    var key_words = (this.list[this.counter].name).split(/\W/); // split by non-word chars
-    var ans_words = answer.split(/\W/); // split by non-word chars
+    var key_words = (this.list[this.counter].name).replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
+    var ans_words = answer.replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
     var hint_words = [];
     var correct = true;
 
@@ -95,13 +107,13 @@ spotifyPlayer.prototype.checkAnswer = function (answer) {
     for (var ans of ans_words) {
         for (var j = 0; j < key_words.length; j++) {
             if (key_words[j].toLowerCase() == ans.toLowerCase()) {
+
                 hint_words[j] = key_words[j];
             }
         }
     }
 
     var hint_string = hint_words.join(' ');
-
     return {'isCorrect': correct, 'hint': hint_string};
 
 };
@@ -124,4 +136,3 @@ spotifyPlayer.prototype.getCredential = function () {
 
     return deferred;
 }
-

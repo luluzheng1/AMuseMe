@@ -5,13 +5,20 @@
 	<meta charset ="utf-8" name="viewport" content = "width=device-width, initial-scale=1" />
 	<link href="../style/transition.css" rel="stylesheet" />
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="../javascript/player.js"></script> 
 </head>
 
-<body>
-	<h1> Now Playing... </h1>
-	<h3> Can you guess the song? </h3>
+<body id="change">
+	<h3> Click Begin to Play </h3>
+	<button id="strBtn">Begin</button>
+	<button id="stpBtn">Play/Pause</button>
+	<div id="score">0</div>
+	<audio id="audio" controls="controls">
+  	<source id="audioSource" src=""></source>
+  	Your browser does not support the audio format.
+	</audio>
 	<div>Answer:
-    <input id="myanswer" name="input" value="" type="text" autocomplete="on" />
+    <input id="myanswer" name="input" value="" type="text"/>
     </div>
 	<!-- Opens the Pop Up, should generate response/ score based on user's answer -->
 	<button id="myBtn" class="button">Enter</button>
@@ -19,7 +26,7 @@
 	<div id="myModal" class="modal">
 		<!-- Set Modal content -->
 		<div class="modal-content" id="content">
-			<p>Implement validate answer function</p>
+			<p id="answer"> </p>
 			<button class ="close" id="close">QUIT GAME</button>
 			<button class ="continue" id="continue">CONTINUE</button>
 		</div>

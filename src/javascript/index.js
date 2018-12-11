@@ -19,7 +19,7 @@ $(document).ready(function() {
     	$('#mask').fadeIn(300);
 
     	$('.blinking-cursor').fadeIn(300);
-    
+        
     	return false;
 	});
 
@@ -50,6 +50,7 @@ $(document).ready(function() {
     document.getElementsByTagName("button")[1].onclick = function(){
         window.location.assign("genre.html");
     };
+
 
 });
 
