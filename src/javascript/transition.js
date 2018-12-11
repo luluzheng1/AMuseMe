@@ -3,6 +3,14 @@
 //changes audio
 var change = document.getElementById('change');
 
+$('html').bind('keypress', function(e) {
+    if (e.which === 13) {
+        e.preventDefault();
+        return false;
+  }
+});
+
+
 var genreForRound = localStorage.getItem('genre');
 console.log(genreForRound);
 var genres = ["hip-hop", "pop", "classical", "country", "rock"];
