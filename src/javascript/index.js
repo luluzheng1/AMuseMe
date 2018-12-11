@@ -1,6 +1,7 @@
 
 
 $(document).ready(function() {
+            
         
         $('a.popup').click(function() {
             $('.login-popup').fadeIn(300);
@@ -62,8 +63,11 @@ $(document).ready(function() {
 
         //write name to local storage
         if (localStorageSupport)
+        {
             localStorage.setItem('username', name); 
-
+            localStorage.score = 0;
+            localStorage.num_wrong = 0;
+        }
         window.location.assign("genre.html");
     };
 
