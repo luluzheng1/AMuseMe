@@ -18,6 +18,7 @@ spotifyPlayer.prototype.initList = function() {
     this.getCredential()
     .done(function(){
         console.log('Bearer ' + self.accessToken);
+
         $.ajax({
             url: 'https://api.spotify.com/v1/recommendations',
             method: 'GET',
@@ -25,6 +26,7 @@ spotifyPlayer.prototype.initList = function() {
             data: {
                 seed_genres: self.genre,
                 market: 'US',
+                popularity: 100
             },
 
             headers: {
