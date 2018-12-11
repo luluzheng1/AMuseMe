@@ -155,15 +155,23 @@ a.bttn:focus {
   opacity: 1;
 }
 
+.score_label {
+  color: #1abca6;
+  font-size: 15vh;
+  letter-spacing: 5px;
+  position: absolute;
+  top: 0vh;
+  right: 1vh;
+}
+
 .score {
   color: #1abca6;
 
   font-size: 18vw;
   letter-spacing: 5px;
   position: absolute;
-  top: 2vh;
-  right: 3vw;
-
+  top: 10vh;
+  right: 1vh;
 }
 
 audio {

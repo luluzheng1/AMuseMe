@@ -130,6 +130,8 @@ btn.onclick = function() {
         if(this_player.nwrong == 5)
           window.location.assign("stats.html")
     }
+
+    
 }
 
 
@@ -189,6 +191,8 @@ cont.onclick= function() {
     //window.location.reload();
     player.next();
     changeAudioElement();
+    document.getElementById("myform").reset();
+
 }
 
 
