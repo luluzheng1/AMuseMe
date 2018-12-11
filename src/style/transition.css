@@ -72,6 +72,7 @@ a.bttn:focus {
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
+
 .bttn:before {
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
@@ -157,7 +158,9 @@ a.bttn:focus {
 
 .score_label {
   color: #1abca6;
-  font-size: 15vh;
+
+  font-size: 10vh;
+
   letter-spacing: 5px;
   position: absolute;
   top: 0vh;
@@ -167,11 +170,11 @@ a.bttn:focus {
 .score {
   color: #1abca6;
 
-  font-size: 18vw;
+  font-size: 14vh;
   letter-spacing: 5px;
   position: absolute;
-  top: 10vh;
-  right: 1vh;
+  top: 7vh;
+  right: 3vw;
 }
 
 audio {
