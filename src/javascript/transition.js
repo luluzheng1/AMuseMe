@@ -12,7 +12,7 @@ if(genreForRound == "shuffle")
     console.log(rand);
 }
 else
-    var player = new spotifyPlayer(genreForRound, 10);
+    var player = new spotifyPlayer("mandopop", 10);
 
 
 var isPlaying = false;
