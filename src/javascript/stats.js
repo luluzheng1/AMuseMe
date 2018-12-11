@@ -29,8 +29,8 @@ $(document).ready(function() {
     layout:"fitDataFill",
     layout:"fitColumns",
     columns:[
-    {title:"Name", field:"username", align:"left"},
-    {title:"Score", field:"score", align:"right", sorter:"number"}
+    {title:"Name", field:"username", align:"center"},
+    {title:"Score", field:"score", align:"center", sorter:"number"}
     ]
   });
 
