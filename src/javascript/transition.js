@@ -1,3 +1,32 @@
+//changes audio
+var change = document.getElementById('change');
+
+var player = new spotifyPlayer('pop', 10);
+
+var isPlaying = false;
+function changeAudioElement(){
+  //e.preventDefault();
+
+  //var elm = e.target;
+  var audio = document.getElementById('audio');
+
+  var source = document.getElementById('audioSource');
+  source.src = player.getPlayerURL();
+
+  audio.load(); //call this to just preload the audio without playing
+  audio.play(); //call this to play the song right away
+}
+
+change.onload = function() {
+    player.initList();
+}
+
+// $(document).ready(function() {
+//     player.initList();
+// })
+
+var start = document.getElementById('strBtn');
+var stop = document.getElementById('stpBtn');
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -10,7 +39,6 @@ var close = document.getElementById("close");
 var cont = document.getElementById("continue");
 
 var userinput = "";
-
 
 // Try to read the score from localStorage
 // if not there then initalize it to 0
@@ -27,13 +55,16 @@ if (!num_wrong){
     localStorage.setItem("num_wrong", num_wrong);
 }
 
-
+var my_genre = localStorage.getItem("genre")
+if (!my_genre)
+    my_genre = "NA";
 
 //player object; name is inherited from index.js
 var this_player = {
 	thename: name,
 	thescore: score,
-	nwrong: num_wrong
+	nwrong: num_wrong,
+    thegenre: my_genre
 };
 
 // When the user clicks the button, open the modal 
@@ -42,39 +73,78 @@ btn.onclick = function() {
 	userinput = document.getElementById("myanswer").value;
 	userinput = userinput.replace(/[^\w\s]/gi, ''); 
 
-    alert(userinput);
+    //alert(userinput);
 
     modal.style.display = "block";
+    let result = player.checkAnswer(userinput);
+    console.log(result.isCorrect);
+    console.log(result.hint);
 
-    if(userinput == SONGNAME)
+
+    if(result.isCorrect)
     {
-    	this_player.thescore++;
-         //Save new score in localStorage
-        localStorage.score = this_player.thescore;
-    
-    }
 
+        this_player.thescore++;
+        let content = document.getElementById("answer");
+        content.innerHTML = "<h1>Correct! Score: " + this_player.thescore + "</h1>";
+        //Save new score in localStorage
+        localStorage.score = this_player.thescore;
+    }
     else
     {
-    	this_player.nwrong++;
+        let content = document.getElementById("answer");
+        var songname = player.getSongName();
+        content.innerHTML = "<h1>Wrong, the song is " + songname + " Score: " + this_player.thescore + "</h1>";
+        this_player.nwrong++;
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
     }
 }
 
+
+
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
-    //code will be added here to submit to database
-    //reset score so for next round it restarts at 0
-    localStorage.score = 0;
-    localStorage.num_wrong = 0;
-    modal.style.display = "none";
-    window.location.assign("homepage.html");
-}
 
+    //code will be added here to submit to database
+    playInsert = {
+        "username": this_player.thename,
+        "score": this_player.thescore,
+        "nwrong": this_player.nwrong,
+        "genre": this_player.thegenre
+    };
+    console.log(this_player);
+    console.log(JSON.stringify(playInsert));
+    console.log("\n\n\n" + playInsert);
+    var jqxhr = $.ajax( {
+        url: "https://amuseme-trivia-game.herokuapp.com/submit",
+        type: "POST",
+        data:JSON.stringify(playInsert),
+        dataType: "json",
+        contentType: "application/json; charset==utf-8",
+        success: function(results, status) {
+            console.log("Posted to db successfully.")
+        },
+        error: function(jqxhr, ex) {
+            console.log("Error writing to database " + ex )
+            console.log("\n\n" | jqxhr)
+        }
+    });
+    jqxhr.always(function() {
+        //reset score so for next round it restarts at 0
+        alert( "Your final score is " + localStorage.score
+        + "    You had " + localStorage.num_wrong + " wrong answers");
+        localStorage.score = 0;
+        localStorage.num_wrong = 0;
+        modal.style.display = "none";
+        window.location.assign("homepage.html");
+    });
+};
 cont.onclick= function() {
-	modal.style.display = "none";
-	window.location.reload() ;
+    modal.style.display = "none";
+    //window.location.reload();
+    player.next();
+    changeAudioElement();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -83,4 +153,28 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+start.onclick = function() {
+    changeAudioElement();
+}
+
+var audio = document.getElementById('audio');
+stop.onclick = function() {
+    togglePlay();
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+};
+
+audio.onplaying = function() {
+  isPlaying = true;
+};
+audio.onpause = function() {
+  isPlaying = false;
+};
 
