@@ -55,11 +55,50 @@ spotifyPlayer.prototype.initList = function() {
     return deferred;
 };
 
+spotifyPlayer.prototype.expand = function() {
+    var self = this;
+    var deferred = $.Deferred();
+    $.ajax({
+        url: 'https://api.spotify.com/v1/recommendations',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            seed_genres: self.genre,
+            market: 'US',
+        },
+
+        headers: {
+            'Authorization': 'Bearer ' + self.accessToken
+        }
+
+    })
+    .done(function(data) {
+        console.log(data);
+        for (eachTrack of data.tracks) {
+            if (eachTrack.preview_url !== null) {
+                let currTrack = {
+                    album: eachTrack.album || 'Unknown',
+                    artists: eachTrack.artists || 'Unknown',
+                    name: eachTrack.name,
+                    preview_url: eachTrack.preview_url,
+                    id: eachTrack.id
+                }
+                self.list.push(currTrack);
+            }
+        }
+        self.numberTracks = self.list.length;
+        console.log(self.list);
+        deferred.resolve();
+    });
+
+    return deferred;
+}
+
 /*
  *  increment the current counter
  */
 spotifyPlayer.prototype.next = function() { 
-    console.log(this.counter); 
+    console.log(this.counter, this.list.length); 
     this.counter++; 
     
 };
@@ -80,13 +119,16 @@ spotifyPlayer.prototype.getArtist = function() {
  *  return a url to the song
  */
 spotifyPlayer.prototype.getPlayerURL = function() {
-    if (this.counter < this.numberTracks) {
-        console.log(this.list[this.counter].name);
-        console.log(this.list[this.counter].name);
+console.log(this.list[this.counter].name);  
+    if (this.counter == this.numberTracks - 1){
+        this.expand();
+        return this.list[this.counter].preview_url;
+    }
+    else if (this.counter < this.numberTracks) {
         return this.list[this.counter].preview_url;
     }
     else {
-        console.error('Exhausted');
+        console.error("Exhausted", this.counter, this.numberTracks);
     }
 };
 
