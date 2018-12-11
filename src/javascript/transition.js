@@ -97,9 +97,9 @@ if (!num_wrong){
 
 //player object; name is inherited from index.js
 var this_player = {
-	thename: name,
-	thescore: score,
-	nwrong: num_wrong,
+  thename: name,
+  thescore: score,
+  nwrong: num_wrong,
     thegenre: my_genre
 };
 
@@ -136,12 +136,35 @@ btn.onclick = function() {
         if(this_player.nwrong >= 5)
         {
 
-          window.location.assign("stats.html")
+          window.location.assign("stats.html");
+          playInsert = {
+          "username": this_player.thename,
+          "score": this_player.thescore,
+          "nwrong": this_player.nwrong,
+         "genre": this_player.thegenre
+          };
+
+
+      var jqxhr = $.ajax( {
+        url: "https://amuseme-trivia-game.herokuapp.com/submit",
+        type: "POST",
+        data:JSON.stringify(playInsert),
+        dataType: "json",
+        contentType: "application/json; charset==utf-8",
+        success: function(results, status) {
+            console.log("Posted to db successfully.")
+        },
+        error: function(jqxhr, ex) {
+            console.log("Error writing to database " + ex )
+            console.log("\n\n" | jqxhr)
         }
-    }
+      });
+
+        }
+  }
 
     
-}
+};
 
 
 // When the user clicks on <span> (x), close the modal
@@ -153,41 +176,30 @@ close.onclick = function() {
     window.location.assign("stats.html");
 
 
-}
-
-//     //code will be added here to submit to database
-//     playInsert = {
-//         "username": this_player.thename,
-//         "score": this_player.thescore,
-//         "nwrong": this_player.nwrong,
-//         "genre": this_player.thegenre
-//     };
+    //code will be added here to submit to database
+    playInsert = {
+        "username": this_player.thename,
+        "score": this_player.thescore,
+        "nwrong": this_player.nwrong,
+        "genre": this_player.thegenre
+    };
 
 
-//     var jqxhr = $.ajax( {
-//         url: "https://amuseme-trivia-game.herokuapp.com/submit",
-//         type: "POST",
-//         data:JSON.stringify(playInsert),
-//         dataType: "json",
-//         contentType: "application/json; charset==utf-8",
-//         success: function(results, status) {
-//             console.log("Posted to db successfully.")
-//         },
-//         error: function(jqxhr, ex) {
-//             console.log("Error writing to database " + ex )
-//             console.log("\n\n" | jqxhr)
-//         }
-//     });
-//     jqxhr.always(function() {
-//         //reset score so for next round it restarts at 0
-//         alert( "Your final score is " + localStorage.score
-//         + "    You had " + localStorage.num_wrong + " wrong answers");
-//         localStorage.score = 0;
-//         localStorage.num_wrong = 0;
-//         modal.style.display = "none";
-//         window.location.assign("homepage.html");
-//     });
-// };
+    var jqxhr = $.ajax( {
+        url: "https://amuseme-trivia-game.herokuapp.com/submit",
+        type: "POST",
+        data:JSON.stringify(playInsert),
+        dataType: "json",
+        contentType: "application/json; charset==utf-8",
+        success: function(results, status) {
+            console.log("Posted to db successfully.")
+        },
+        error: function(jqxhr, ex) {
+            console.log("Error writing to database " + ex )
+            console.log("\n\n" | jqxhr)
+        }
+    });
+};
 
 
 cont.onclick= function() {
