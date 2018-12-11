@@ -235,6 +235,7 @@ audio {
 
 }
 
+/*the continue button*/
 .continue {
   color: #1abca6;
   margin-left: 4vw;
@@ -276,6 +277,35 @@ audio {
   background: black;
 }
 
+/*hint button*/
+.hintbutton {
+    background-color: white;
+    position:absolute;
+  /* color of button */
+  color: #1abca6;
+  /* color of button text */
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 6px 4px;
+  border-color:#CC6600;
+  font: 12px;
+  font-weight: bold;
+  width: 15vw;
+  /* dimension of box */
+  height: 8vh;
+  position: center;
+  top: 70vh;
+    left: 33%;
+  /* position at bottom */
+  bottom: 0px;
+
+  /* center*/
+}
+
+.hintbutton:hover {
+  background: black;
+}
+
 #myanswer {
   position: absolute;
   top: 65vh;
@@ -288,7 +318,8 @@ audio {
 #myBtn {
   position: absolute;
   top: 70vh;
-  left: 43%;
+
+  left: 53%;
   height: 8vh;
   width: 15vw;
   font-size:2vw;
