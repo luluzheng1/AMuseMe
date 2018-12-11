@@ -18,6 +18,7 @@ spotifyPlayer.prototype.initList = function() {
     this.getCredential()
     .done(function(){
         console.log('Bearer ' + self.accessToken);
+
         $.ajax({
             url: 'https://api.spotify.com/v1/recommendations',
             method: 'GET',
@@ -25,6 +26,7 @@ spotifyPlayer.prototype.initList = function() {
             data: {
                 seed_genres: self.genre,
                 market: 'US',
+                popularity: 100
             },
 
             headers: {
@@ -38,18 +40,19 @@ spotifyPlayer.prototype.initList = function() {
                 if (eachTrack.preview_url !== null) {
                     let currTrack = {
                         album: eachTrack.album || 'Unknown',
+                        artists: eachTrack.artists || 'Unknown',
                         artists: eachTrack.artists[0].name || 'Unknown',
                         name: eachTrack.name,
                         preview_url: eachTrack.preview_url,
                         id: eachTrack.id
                     }
+
                     //console.log(eachTrack.artists[0].name);
+
                     self.list.push(currTrack);
                 }
             }
             self.numberTracks = self.list.length;
-            //console.log(self.list);
-
             deferred.resolve();
         });
     });
@@ -57,11 +60,50 @@ spotifyPlayer.prototype.initList = function() {
     return deferred;
 };
 
+spotifyPlayer.prototype.expand = function() {
+    var self = this;
+    var deferred = $.Deferred();
+    $.ajax({
+        url: 'https://api.spotify.com/v1/recommendations',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            seed_genres: self.genre,
+            market: 'US',
+        },
+
+        headers: {
+            'Authorization': 'Bearer ' + self.accessToken
+        }
+
+    })
+    .done(function(data) {
+        console.log(data);
+        for (eachTrack of data.tracks) {
+            if (eachTrack.preview_url !== null) {
+                let currTrack = {
+                    album: eachTrack.album || 'Unknown',
+                    artists: eachTrack.artists || 'Unknown',
+                    name: eachTrack.name,
+                    preview_url: eachTrack.preview_url,
+                    id: eachTrack.id
+                }
+                self.list.push(currTrack);
+            }
+        }
+        self.numberTracks = self.list.length;
+        console.log(self.list);
+        deferred.resolve();
+    });
+
+    return deferred;
+}
+
 /*
  *  increment the current counter
  */
 spotifyPlayer.prototype.next = function() { 
-    console.log(this.counter); 
+    console.log(this.counter, this.list.length); 
     this.counter++; 
     
 };
@@ -72,71 +114,56 @@ spotifyPlayer.prototype.getSongName = function() {
     }
 }
 
+
 spotifyPlayer.prototype.getArtist = function() {
     if(this.counter < this.numberTracks) {
         return this.list[this.counter].artists;
         console.log(this.list[this.counter].artists);
     }
 }
+
 /*
  *  return a url to the song
  */
 spotifyPlayer.prototype.getPlayerURL = function() {
-    if (this.counter < this.numberTracks) {
-        console.log(this.list[this.counter].name);
-        console.log(this.list[this.counter].name);
+console.log(this.list[this.counter].name);  
+    if (this.counter == this.numberTracks - 1){
+        this.expand();
+        return this.list[this.counter].preview_url;
+    }
+    else if (this.counter < this.numberTracks) {
         return this.list[this.counter].preview_url;
     }
     else {
-        console.error('Exhausted');
+        console.error("Exhausted", this.counter, this.numberTracks);
     }
 };
 
-/*
- *  validate userinput function
+
+ /*  validate userinput function
  */
 spotifyPlayer.prototype.checkAnswer = function (answer) {
-    var word = (this.list[this.counter].name).replace(/ *\([^)]*\) */g, "");
-    var sanitized_word = word.replace(/[^\w\s]/gi, ''); //no non-word char
-    var sanitized_key_words = sanitized_word.split("\\s+");
-    var key_words = word.split("\\s+"); // split by space
-    var ans_words = answer.split("\\s+"); // split by non-word chars
-    // console.log("s_key_words = " + sanitized_key_words);
-    // console.log("key_words = " + key_words);
-    // console.log("ans_words =" + ans_words);
+    var key_words = (this.list[this.counter].name).replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
+    var ans_words = answer.replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
     var hint_words = [];
     var correct = true;
 
     for (var i = 0; i < key_words.length; i++) {
         correct &= (ans_words[i] && key_words[i].toLowerCase() == ans_words[i].toLowerCase());
-        hint_words[i] = "__";
+        hint_words[i] = "__"
     } 
-
-    if(!correct) {
-        console.log("in loop");
-        for (var i = 0; i < key_words.length; i++) {
-            // console.log("sanitizied" + sanitized_key_words[i].toLowerCase());
-            // console.log("ans" + ans_words[i].toLowerCase());
-            if(sanitized_key_words[i].toLowerCase() == ans_words[i].toLowerCase()) {
-                correct = true;
-                 //console.log(correct);
-            }
-            else
-                correct = false;
-           
-        }
-    }
 
     for (var ans of ans_words) {
         for (var j = 0; j < key_words.length; j++) {
-            if (key_words[j].toLowerCase() == ans.toLowerCase() || 
-                sanitized_key_words[j].toLowerCase() == ans.toLowerCase()) {
+            if (key_words[j].toLowerCase() == ans.toLowerCase()) {
+
                 hint_words[j] = key_words[j];
             }
         }
     }
 
     var hint_string = hint_words.join(' ');
+
     return {'isCorrect': correct, 'hint': hint_string};
 
 };
