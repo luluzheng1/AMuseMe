@@ -127,6 +127,8 @@ btn.onclick = function() {
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
     }
+
+    
 }
 
 
@@ -184,6 +186,8 @@ cont.onclick= function() {
     //window.location.reload();
     player.next();
     changeAudioElement();
+    document.getElementById("myform").reset();
+
 }
 
 // When the user clicks anywhere outside of the modal, close it

@@ -147,12 +147,21 @@ a.bttn:focus {
   opacity: 1;
 }
 
+.score_label {
+  color: #1abca6;
+  font-size: 15vh;
+  letter-spacing: 5px;
+  position: absolute;
+  top: 0vh;
+  right: 1vh;
+}
+
 .score {
   color: #1abca6;
   font-size: 30vh;
   letter-spacing: 5px;
   position: absolute;
-  top: 0vh;
+  top: 10vh;
   right: 1vh;
 }
 
