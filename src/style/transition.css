@@ -1,95 +1,287 @@
-body{
-    background-color: white;
-    font-size:20px;
-    margin-right: 40px;
-    margin-left:40px;
-    margin-bottom:40px;
-    margin-top: 40px;
-    padding-bottom: 30%;
-    border-top: 10px solid #1abca6;
-    border-bottom: 10px solid #1abca6;
-    z-index: 1;
-    position:relative;
-    text-align: center;
-    color: #CC6600;
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:700";
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+
+  height: 93%;
+
+  width: 100%;
+}
+
+body {
+  margin-right: 0px;
+  margin-left: 0px;
+
+  margin-bottom: 0;
+  margin-top: 10vh;
+
+  padding-bottom: 30%;
+  border-top: 10px solid #1abca6;
+  border-bottom: 10px solid #1abca6;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  color: #CC6600;
+  padding: 0px;
+  font-family: "Source Sans Pro", sans-serif;
+  background: #FFF;
+  -webkit-font-smoothing: antialiased;
+}
+
+.flex {
+
+  margin-top: 6%;
+  display: flex;
+  position: absolute;
+}
+
+a.bttn {
+  color: #1abca6;
+  text-decoration: none;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s ease all;
+}
+a.bttn:hover {
+  color: #CC6600;
+}
+a.bttn:focus {
+  color: #CC6600;
+}
+
+.bttn {
+
+  left:5vw;
+  height: 12vh;
+  font-size: 2.5vh;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  width: 20vw;
+  font-weight: bold;
+  padding-top: 3.5vh;
+
+  border: 3px solid #1abca6;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+.bttn:before {
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #1abca6;
+  z-index: -2;
+}
+.bttn:hover:before {
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+.bttn:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+
+.playBut {
+  /*  border: 1px solid red;*/
+  display: inline-block;
+  -webkit-transition: all 0.5s ease;
+
+  position:absolute;
+  top: 26vh;
+  left: 41%;
+  height: 18vw;
+  width: 18vw;
+}
+.playBut .triangle {
+  -webkit-transition: all 0.7s ease-in-out;
+  stroke-dasharray: 240;
+  stroke-dashoffset: 480;
+  stroke: #000;
+  transform: translateY(0);
+}
+
+.playBut .circle {
+  stroke: #CC6600;
+  stroke-dasharray: 650;
+  stroke-dashoffset: 650;
+  -webkit-transition: all 0.5s ease-in-out;
+  opacity: 0.3;
+}
+
+.playBut:hover .triangle {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  stroke: #1abca6;
+  animation: nudge 0.7s ease-in-out;
+}
+@keyframes nudge {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.playBut:hover .circle {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.score {
+  color: #1abca6;
+
+  font-size: 18vw;
+  letter-spacing: 5px;
+  position: absolute;
+  top: 2vh;
+  right: 3vw;
+
+}
+
+audio {
+  display: none;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none;  /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 200px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 200px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+
+  height:100%;
+
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-    color:#000;
-    background: #1abca6;
-    margin: auto;
-    padding: 50px;
-    border: 1px solid #888;
-    width: 80%;
-     border: 2px solid #CC6600;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px;
-    /* Firefox */
-    -webkit-border-radius: 3px;
-    /* Safari, Chrome */;
+  color: #000;
+  background: #1abca6;
+  margin: auto;
+
+  padding: 25px;
+
+  border: 1px solid #888;
+  width: 80%;
+  border: 2px solid #CC6600;
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px;
+  /* Firefox */
+  -webkit-border-radius: 3px;
+  /* Safari, Chrome */
+
+  font-size:1.5vw;
 }
 
 /* The Close Button */
 .close {
-    color: gray;
-    font-size: 28px;
-    font-weight: bold;
-    background-color: #aaaaaa;
+  color: gray;
+
+  font-size: 2vw;
+  font-weight: bold;
+  background-color: #aaaaaa;
+/*  padding: 8px 8px 8px;*/
+
 }
 
 .continue {
-    color:#1abca6;
-    font-size: 28px;
-    font-weight: bold;
-    background-color: #CC6600;
+  color: #1abca6;
+  margin-left: 4vw;
+  font-size: 2vw;
+  font-weight: bold;
+  background-color: #CC6600;
 }
 
 .continue:hover,
 .continue:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-
 .button {
-    background-color: #CC6600; /* color of button */
-    color:#1abca6; /* color of button text */
-    cursor: pointer;
-    display: inline-block;
-    padding: 6px 6px 4px;
-    border: none;
-    font: 12px;
-    font-weight: bold;
-    width: 130px;   /* dimension of box */
-    height:40px;
-    position:absolute;
-    top: 40%; /* position at bottom */
-    bottom:0px;
-    left: 45%;  /* center*/
+  background-color: #CC6600;
+  /* color of button */
+  color: #1abca6;
+  /* color of button text */
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 6px 4px;
+  border: none;
+  font: 12px;
+  font-weight: bold;
+  width: 130px;
+  /* dimension of box */
+  height: 40px;
+  position: absolute;
+  top: 90%;
+  /* position at bottom */
+  bottom: 0px;
+  left: 50%;
+  /* center*/
 }
 
 .button:hover {
-    background: black;
+  background: black;
 }
 
-audio {
-   display:none;
+#myanswer {
+  position: absolute;
+  top: 65vh;
+  left: 43%;
+  height: 4vh;
+  width: 15vw;
+
 }
 
+#myBtn {
+  position: absolute;
+  top: 70vh;
+  left: 43%;
+  height: 8vh;
+  width: 15vw;
+  font-size:2vw;
+}
