@@ -3,6 +3,14 @@
 //changes audio
 var change = document.getElementById('change');
 
+$('html').bind('keypress', function(e) {
+    if (e.which === 13) {
+        e.preventDefault();
+        return false;
+  }
+});
+
+
 var genreForRound = localStorage.getItem('genre');
 console.log(genreForRound);
 var genres = ["hip-hop", "pop", "classical", "country", "rock"];
@@ -43,6 +51,9 @@ var stop = document.getElementById('stpBtn');
 // Get the modal
 var modal = document.getElementById('myModal');
 
+//hint modal
+var hintmodal = document.getElementById('hintModal');
+
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 
@@ -50,6 +61,10 @@ var btn = document.getElementById("myBtn");
 var close = document.getElementById("close");
 
 var cont = document.getElementById("continue");
+
+var hint = document.getElementById("hint");
+
+var stay = document.getElementById("stay");
 
 var userinput = "";
 
@@ -100,7 +115,6 @@ var this_player = {
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     audio.pause();
-
     userinput = document.getElementById("myanswer").value;
 
     //alert(userinput);
@@ -193,11 +207,28 @@ cont.onclick= function() {
 
 }
 
+stay.onclick=function() {
+  hintmodal.style.display = "none";
+}
 
 start.onclick = function() {
     changeAudioElement();
     start.style.visibility = "hidden";
+    hintcount = 0;
+}
 
+hint.onclick = function() {
+      hintcount++;
+      audio.pause();
+      userinput = document.getElementById("myanswer").value;
+      let result = player.checkAnswer(userinput);
+      hintmodal.style.display = "block";
+      let hintcontent = document.getElementById("hintanswer");
+      var songname = result.hint;
+      if (hintcount > 3)
+        hintcontent.innerHTML = "<h1>No more hints!</h1>";
+      else
+        hintcontent.innerHTML = "<h1>Hint: " + songname + "</h1>";
 }
 
 var audio = document.getElementById('audio');
