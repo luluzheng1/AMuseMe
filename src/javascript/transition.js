@@ -1,3 +1,4 @@
+
 // old code
 //changes audio
 var change = document.getElementById('change');
@@ -87,7 +88,6 @@ if (!num_wrong){
     localStorage.setItem("num_wrong", num_wrong);
 }
 
-
 //player object; name is inherited from index.js
 var this_player = {
 	thename: name,
@@ -102,6 +102,7 @@ btn.onclick = function() {
     audio.pause();
 
     userinput = document.getElementById("myanswer").value;
+
     //alert(userinput);
 
     modal.style.display = "block";
@@ -111,21 +112,23 @@ btn.onclick = function() {
     if(result.isCorrect)
     {
         let content = document.getElementById("answer");
-        content.innerHTML = "<h1>Correct! </h1>" + "<h3> " + player.getSongName() + " by " + player.getArtist() + "</h3>";
+      content.innerHTML = "<h1>Correct! </h1>" + "<h3> " + player.getSongName() + " by " + player.getArtist() + "</h3>";
         this_player.thescore++;
         (document.getElementById("score")).innerHTML = this_player.thescore;
          //Save new score in localStorage
-
     }
+    //modal.style.display = "block";
     else
     {
+        this_player.nwrong++;
         let content = document.getElementById("answer");
         var songname = player.getSongName();
-        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + "by " + player.getArtist() + "</h3>";
-        this_player.nwrong++;
+        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + "by " + player.getArtist() + "</h3>" + "<h4>#wrong: " + this_player.nwrong + "</h4>";
 
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
+        if(this_player.nwrong == 5)
+          window.location.assign("stats.html")
     }
 
     
@@ -143,7 +146,9 @@ close.onclick = function() {
     localStorage.num_wrong = 0;
 
     //modal.style.display = "none";
-    window.location.assign("homepage.html");
+
+    window.location.assign("stats.html");
+
 }
 
 //     //code will be added here to submit to database
@@ -190,16 +195,11 @@ cont.onclick= function() {
 
 }
 
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
 
 start.onclick = function() {
     changeAudioElement();
     start.style.visibility = "hidden";
+
 }
 
 var audio = document.getElementById('audio');

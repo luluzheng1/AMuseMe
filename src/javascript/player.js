@@ -40,7 +40,9 @@ spotifyPlayer.prototype.initList = function() {
                 if (eachTrack.preview_url !== null) {
                     let currTrack = {
                         album: eachTrack.album || 'Unknown',
+
                         artists: eachTrack.artists.map(a => a.name).join(', ') || 'Unknown',
+
                         name: eachTrack.name,
                         preview_url: eachTrack.preview_url,
                         id: eachTrack.id
@@ -52,6 +54,7 @@ spotifyPlayer.prototype.initList = function() {
                 }
             }
             self.numberTracks = self.list.length;
+
             deferred.resolve();
         });
     });
@@ -102,7 +105,9 @@ spotifyPlayer.prototype.expand = function() {
  *  increment the current counter
  */
 spotifyPlayer.prototype.next = function() { 
+
     console.log(this.counter, this.list.length); 
+
     this.counter++; 
     
 };
@@ -112,7 +117,6 @@ spotifyPlayer.prototype.getSongName = function() {
         return this.list[this.counter].name;
     }
 }
-
 
 spotifyPlayer.prototype.getArtist = function() {
     if(this.counter < this.numberTracks) {
@@ -125,6 +129,7 @@ spotifyPlayer.prototype.getArtist = function() {
  *  return a url to the song
  */
 spotifyPlayer.prototype.getPlayerURL = function() {
+
 console.log(this.list[this.counter].name);  
     if (this.counter == this.numberTracks - 1){
         this.expand();
@@ -166,7 +171,6 @@ spotifyPlayer.prototype.checkAnswer = function (answer) {
     }
 
     var hint_string = hint_words.join(' ');
-
     return {'isCorrect': correct, 'hint': hint_string};
 
 };
