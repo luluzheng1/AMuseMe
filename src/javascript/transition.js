@@ -41,9 +41,20 @@ var cont = document.getElementById("continue");
 
 var userinput = "";
 
-var score = 0;
+// Try to read the score from localStorage
+// if not there then initalize it to 0
+// NOTE; we need to reset this to 0 somewhere when we are done with score
+var score = localStorage.getItem("score");
+if (!score){
+    score = 0;
+    localStorage.setItem("score", score );
+}
 
-var num_wrong = 0;
+var num_wrong = localStorage.getItem("num_wrong");
+if (!num_wrong){
+    num_wrong = 0;
+    localStorage.setItem("num_wrong", num_wrong);
+}
 
 // Try to read the score from localStorage
 // if not there then initalize it to 0
@@ -70,9 +81,8 @@ var this_player = {
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     audio.pause();
-	userinput = document.getElementById("myanswer").value;
-	
 
+	userinput = document.getElementById("myanswer").value;
     //alert(userinput);
 
     modal.style.display = "block";
@@ -86,26 +96,33 @@ btn.onclick = function() {
         this_player.thescore++;
         (document.getElementById("score")).innerHTML = this_player.thescore;
          //Save new score in localStorage
-        localStorage.score = this_player.thescore;
-    }
+
+    //modal.style.display = "block";
+    SONGNAME = "test1";
     else
     {
         let content = document.getElementById("answer");
         var songname = player.getSongName();
         content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + "by " + player.getArtist() + "</h3>";
         this_player.nwrong++;
+
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
     }
-
 }
 
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
     localStorage.score = 0;
     localStorage.num_wrong = 0;
-    modal.style.display = "none";
-    window.location.assign("homepage.html");
+
+    //code will be added here to submit to database
+    //reset score so for next round it restarts at 0
+    localStorage.score = 0;
+    localStorage.num_wrong = 0;
+
+    //modal.style.display = "none";
+    //window.location.assign("/");
 }
 
 cont.onclick= function() {

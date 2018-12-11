@@ -7,10 +7,10 @@ body {
 
 h1{
 	font-size:7vw;
-	position: relative;
-	top: 0.0vh;
-	left: 8vw;
-	font-family:"PT Sans Narrow";
+	position: absolute;
+	top: 3.2vh;
+	left: 12vw;
+	font-family:"Trebuchet MS";
 	font-weight: bold;
 	letter-spacing:0.2em;
 	color:#f2570e;

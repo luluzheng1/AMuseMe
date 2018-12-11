@@ -1,114 +1,107 @@
 
 body{
-	background-color: white;
-	margin-left:5px;
+  font-size: 12px;
+  background-color: white;
+  margin-left:5px;
   margin-right: 5px;
-	margin-bottom:8%;
-  margin-top: 5%;
+  margin-bottom: 2vh;
+  margin-top: 21vh;
   padding-top: 25%;
-  padding-bottom: 15%;
+  padding-bottom: 12%;
   position: relative;
   border-top: 10px solid #1abca6;
-	border-bottom: 10px solid #1abca6;
+  border-bottom: 10px solid #1abca6;
   z-index: 1;
 }
 
 /**the green inner border**/
 body:after {
-  	content: "";
-  	display: block;
-  	position: absolute;
-  	top: 2.6%;
-  	border: solid 2px #1abca6;
-  	width: 99.5%;
-  	min-height: 94%;
-  	padding-bottom: -10px;  
-  	z-index: -10;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2.6%;
+    border: solid 2px #1abca6;
+    width: 99.5%;
+    min-height: 94%;
+    padding-bottom: -10px;  
+    z-index: -10;
 }
 
 body:before {
-  	content: "";
-  	display: block;
-  	position: absolute;
-  	top: 3.1%;
-  	border: solid 2px white;
-  	width: 99.5%;
-  	min-height: 94%;
-  	padding-bottom: -2px;  
-  	z-index: 10;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3.1%;
+    border: solid 2px white;
+    width: 99.5%;
+    min-height: 94%;
+    padding-bottom: -2px;  
+    z-index: 10;
 }
 
 h1{
-	font-size:8vw;
-	position: absolute;
+  font-size:8vw;
+  position: absolute;
   top:-5%;
-	left:29%;
+  left:29%;
   width: 90vw;
-	font-family:"Trebuchet MS";
-	font-weight:bold;
-	letter-spacing:1.3vw;
-	color:#f2570e;
+  font-family:"Trebuchet MS";
+  font-weight:bold;
+  letter-spacing:1.3vw;
+  color:#f2570e;
 }
 
 
 
 h2{
-	font-size:2.5vw;
-	position: absolute;
-	padding-top: 2%;
-	top: 63%;
-	left: 33%;
-	font-family:"Trebuchet MS";
-	font-weight:bold;
-	letter-spacing:0.1em;
-	color:#f2570e;
+  font-size:2.8vw;
+  position: absolute;
+  padding-top: 2%;
+  top: 64%;
+  left: 31%;
+  width: 80vw;
+  max-width: 100%;
+  font-family:"Trebuchet MS";
+  font-weight:bold;
+  letter-spacing:0.2vw;
+  color:#f2570e;
 }
 
 .overlap{
-  font-size: 2.5vw;
   color:#1abca6;
-  position: absolute;
-  top:63%;
-  left:33.5%;
+    left:31.5%;
 }
 
 h3{
-	font-size:2vw;
-	position: absolute;
-	top: 79%;
-	left: 34%;
-	font-family:"Open Sans";
+  font-size:2vw;
+  position: absolute;
+  top: 81%;
+  left: 34%;
+  width: 60vw;
+  max-width: 100%;
+  font-family:"Open Sans";
   font-weight: normal;
-	font-style: italic;
-	letter-spacing:0.2em;
-	color:#f2570e;
+  font-style: italic;
+  letter-spacing:0.3vw;
+  color:#f2570e;
 }
 
 h4{
   font-size:1.7vw;
   font-family:"PT Sans Narrow";
   position: absolute;
-  left:38%;
-  margin-top:18vw;
+  left:37%;
+  margin-top:16vw;
   letter-spacing:0.3em;
 }
 
 
-a:link{
-  text-decoration:none;
-  font-weight: bold;
-  color:#f2570e;
-}
-
-a:visited{
-  color:#CC6600;
-}
 
 img{
-	margin-top:10px;
-	position: absolute;
-	top: 30%;
-	left: 41%;
+  margin-top:10px;
+  position: absolute;
+  top: 30%;
+  left: 41%;
   height: 15vw;
   width: 15vw;
   max-width: 100%;
@@ -117,18 +110,18 @@ img{
 
 .popup{
   potision:absolute;
-	top:110%;
-	left: 37%;
-	-webkit-animation: 1s blink step-end infinite;
-  	-moz-animation: 1s blink step-end infinite;
-  	animation: 1s blink step-end infinite;
+  top:110%;
+  left: 37%;
+  -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
 }
 
 .changecolor{
-	color:#1abca6;
-	-webkit-animation: 1s blinkBl step-end infinite;
-  	-moz-animation: 1s blinkBl step-end infinite;
-  	animation: 1s blinkBl step-end infinite;
+  color:#1abca6;
+  -webkit-animation: 1s blinkBl step-end infinite;
+    -moz-animation: 1s blinkBl step-end infinite;
+    animation: 1s blinkBl step-end infinite;
 }
 
 @keyframes blinkBl {
@@ -324,13 +317,25 @@ form.signin .textbox input {
 }
 
 #copyright {
-  font-size: 9px;
-  bottom: 30%;
+  font-size:0.8vw;
+  letter-spacing:0.1em;
+  top: 122%;
+  right:0;
+  font-family:"PT Sans Narrow";
+  position: absolute;
+  text-decoration:none;
+  font-weight: bold;
 }
 
-#disclaimer {
-  border: 1px;
-  padding: 8px;
-  font-size: 5px;
+a:link{
+  text-decoration:none;
+  font-weight: bold;
+  color:#f2570e;
 }
+
+a:visited{
+  color:#CC6600;
+}
+
+
 
