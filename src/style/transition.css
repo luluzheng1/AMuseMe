@@ -271,24 +271,26 @@ audio {
 
 /*hint button*/
 .hintbutton {
-    background-color: #CC6600;
+    background-color: white;
+    position:absolute;
   /* color of button */
   color: #1abca6;
   /* color of button text */
   cursor: pointer;
   display: inline-block;
   padding: 6px 6px 4px;
-  border: none;
+  border-color:#CC6600;
   font: 12px;
   font-weight: bold;
-  width: 130px;
+  width: 15vw;
   /* dimension of box */
-  height: 40px;
+  height: 8vh;
   position: center;
-  top: 90%;
+  top: 70vh;
+    left: 33%;
   /* position at bottom */
   bottom: 0px;
-  left: 50%;
+
   /* center*/
 }
 
@@ -308,7 +310,8 @@ audio {
 #myBtn {
   position: absolute;
   top: 70vh;
-  left: 43%;
+
+  left: 53%;
   height: 8vh;
   width: 15vw;
   font-size:2vw;
