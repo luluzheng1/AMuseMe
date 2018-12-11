@@ -38,16 +38,21 @@ spotifyPlayer.prototype.initList = function() {
                 if (eachTrack.preview_url !== null) {
                     let currTrack = {
                         album: eachTrack.album || 'Unknown',
+                        artists: eachTrack.artists || 'Unknown',
                         artists: eachTrack.artists[0].name || 'Unknown',
                         name: eachTrack.name,
                         preview_url: eachTrack.preview_url,
                         id: eachTrack.id
                     }
+
                     //console.log(eachTrack.artists[0].name);
+
                     self.list.push(currTrack);
                 }
             }
             self.numberTracks = self.list.length;
+
+
             //console.log(self.list);
 
             deferred.resolve();
@@ -72,12 +77,14 @@ spotifyPlayer.prototype.getSongName = function() {
     }
 }
 
+
 spotifyPlayer.prototype.getArtist = function() {
     if(this.counter < this.numberTracks) {
         return this.list[this.counter].artists;
         console.log(this.list[this.counter].artists);
     }
 }
+
 /*
  *  return a url to the song
  */
@@ -92,8 +99,8 @@ spotifyPlayer.prototype.getPlayerURL = function() {
     }
 };
 
-/*
- *  validate userinput function
+
+ /*  validate userinput function
  */
 spotifyPlayer.prototype.checkAnswer = function (answer) {
     var word = (this.list[this.counter].name).replace(/ *\([^)]*\) */g, "");
@@ -109,6 +116,12 @@ spotifyPlayer.prototype.checkAnswer = function (answer) {
 
     for (var i = 0; i < key_words.length; i++) {
         correct &= (ans_words[i] && key_words[i].toLowerCase() == ans_words[i].toLowerCase());
+        hint_words[i] = "__"
+    } 
+
+    for (var ans of ans_words) {
+        for (var j = 0; j < key_words.length; j++) {
+            if (key_words[j].toLowerCase() == ans.toLowerCase()) {
         hint_words[i] = "__";
     } 
 
@@ -137,6 +150,7 @@ spotifyPlayer.prototype.checkAnswer = function (answer) {
     }
 
     var hint_string = hint_words.join(' ');
+
     return {'isCorrect': correct, 'hint': hint_string};
 
 };

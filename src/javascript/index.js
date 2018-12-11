@@ -13,13 +13,28 @@ $(document).ready(function() {
         'margin-top' : -popMargTop,
         'margin-left' : -popMargLeft
     	});
-    
-    	// Add the mask to body
+        
+        
+        //Read username from localstorage if it exists already
+        localStorageSupport = true;
+        var name;
+        try {
+            name = localStorage.getItem('username')
+        }
+        catch (err) {
+            //localStorage is not supported
+            localStorageSupport = false;
+        }
+        if (name) {
+            document.getElementById("username").value  = name;
+        }
+    	
+        // Add the mask to body
     	$('body').append('<div id="mask"></div>');
     	$('#mask').fadeIn(300);
 
     	$('.blinking-cursor').fadeIn(300);
-        
+      document.getElementById("username").focus();
     	return false;
 	});
 
@@ -42,6 +57,10 @@ $(document).ready(function() {
     document.getElementsByTagName("button")[0].onclick = function(){
         name = document.getElementById("username").value;
         name = name.replace(/[^\w\s]/gi, ''); 
+        //write name to local storage
+        if (localStorageSupport)
+            localStorage.setItem('username', name); 
+
         alert(name);
         window.location.assign("genre.html");
     };
