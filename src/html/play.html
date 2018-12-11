@@ -39,9 +39,9 @@
   	Your browser does not support the audio format.
 	</audio>
 <!-- Answer Input Box -->
-	<div>
-    <input id="myanswer" name="input" value="" type="text"/>
-    </div>
+	<form id="myform">
+    <input id="myanswer" name="input" value="" type="text" autocomplete="off"/>
+    </form>
 <!-- Enter Button -->
 <button id="myBtn" class="button">Enter</button>
 	<!-- Make Modal -->
@@ -51,6 +51,17 @@
 			<p id="answer"> </p>
 			<button class ="close" id="close">QUIT GAME</button>
 			<button class ="continue" id="continue">CONTINUE</button>
+		</div>
+	</div>
+
+<!-- Hint Button -->
+<button id="hint" class="hintbutton">Hint</button>
+	<!-- Make Modal -->
+	<div id="hintModal" class="modal">
+		<!-- Set Modal content -->
+		<div class="modal-content" id="hintcontent">
+			<p id="hintanswer"> </p>
+			<button class ="hint" id="stay">OK</button>
 		</div>
 	</div>
 </body>
