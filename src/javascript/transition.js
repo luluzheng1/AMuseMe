@@ -2,7 +2,6 @@
 //changes audio
 var change = document.getElementById('change');
 
-
 var genreForRound = localStorage.getItem('genre');
 console.log(genreForRound);
 var genres = ["hip-hop", "pop", "classical", "country", "rock"];
@@ -13,7 +12,7 @@ if(genreForRound == "shuffle")
     console.log(rand);
 }
 else
-    var player = new spotifyPlayer(rand, 10);
+    var player = new spotifyPlayer(genreForRound, 10);
 
 
 var isPlaying = false;
@@ -59,7 +58,7 @@ var userinput = "";
 var score = localStorage.getItem("score");
 if (!score){
     score = 0;
-    localStorage.setItem("score", score );
+    localStorage.setItem("score", score);
 }
 
 var num_wrong = localStorage.getItem("num_wrong");
@@ -98,36 +97,33 @@ var this_player = {
 };
 
 // When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal 
 btn.onclick = function() {
     audio.pause();
-	userinput = document.getElementById("myanswer").value;
+
+    userinput = document.getElementById("myanswer").value;
     //alert(userinput);
 
     modal.style.display = "block";
     let result = player.checkAnswer(userinput);
     console.log(result.isCorrect);
     console.log(result.hint);
-
-
     if(result.isCorrect)
     {
-
         let content = document.getElementById("answer");
         content.innerHTML = "<h1>Correct! </h1>" + "<h3> " + player.getSongName() + " by " + player.getArtist() + "</h3>";
-
-
         this_player.thescore++;
-        //content.innerHTML = "<h1>Correct! Score: " + this_player.thescore + "</h1>";
-        //Save new score in localStorage
-        localStorage.score = this_player.thescore;
+        (document.getElementById("score")).innerHTML = this_player.thescore;
+         //Save new score in localStorage
+
     }
     else
     {
         let content = document.getElementById("answer");
         var songname = player.getSongName();
-
-        content.innerHTML = "<h1>Wrong, the song is " + songname + " Score: " + this_player.thescore + "</h1>";
+        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + "by " + player.getArtist() + "</h3>";
         this_player.nwrong++;
+
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
     }

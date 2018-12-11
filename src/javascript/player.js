@@ -40,8 +40,7 @@ spotifyPlayer.prototype.initList = function() {
                 if (eachTrack.preview_url !== null) {
                     let currTrack = {
                         album: eachTrack.album || 'Unknown',
-                        artists: eachTrack.artists || 'Unknown',
-                        artists: eachTrack.artists[0].name || 'Unknown',
+                        artists: eachTrack.artists.map(a => a.name).join(', ') || 'Unknown',
                         name: eachTrack.name,
                         preview_url: eachTrack.preview_url,
                         id: eachTrack.id
@@ -83,7 +82,7 @@ spotifyPlayer.prototype.expand = function() {
             if (eachTrack.preview_url !== null) {
                 let currTrack = {
                     album: eachTrack.album || 'Unknown',
-                    artists: eachTrack.artists || 'Unknown',
+                    artists: eachTrack.artists.map(a => a.name).join(', ') || 'Unknown',
                     name: eachTrack.name,
                     preview_url: eachTrack.preview_url,
                     id: eachTrack.id
@@ -143,14 +142,18 @@ console.log(this.list[this.counter].name);
  /*  validate userinput function
  */
 spotifyPlayer.prototype.checkAnswer = function (answer) {
-    var key_words = (this.list[this.counter].name).replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
+    // var key_words = (this.list[this.counter].name).replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
+    // console.log(key_words);
+    var key_words = (this.list[this.counter].name).replace(/\([^)]*\)/g, "");
+    console.log(key_words);
+    var key_words = key_words.split(/\W+/);
     var ans_words = answer.replace(/\([^)]*\)/g, " ").split(/\W+/); // split by non-word chars
     var hint_words = [];
     var correct = true;
 
     for (var i = 0; i < key_words.length; i++) {
-        correct &= (ans_words[i] && key_words[i].toLowerCase() == ans_words[i].toLowerCase());
-        hint_words[i] = "__"
+        correct &= (ans_words[i] && key_words[i].toLowerCase() == ans_words[i].toLowerCase()) || key_words[i] == "";
+        hint_words[i] = (key_words[i] == "" ? "" : "__");
     } 
 
     for (var ans of ans_words) {
