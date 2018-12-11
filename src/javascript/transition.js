@@ -122,7 +122,7 @@ close.onclick = function() {
     localStorage.num_wrong = 0;
 
     //modal.style.display = "none";
-    //window.location.assign("/");
+    window.location.assign("homepage.html");
 }
 
 cont.onclick= function() {
@@ -133,11 +133,11 @@ cont.onclick= function() {
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+// window.onclick = function(event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
 
 start.onclick = function() {
     changeAudioElement();
