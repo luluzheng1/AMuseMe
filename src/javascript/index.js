@@ -16,14 +16,6 @@ $(document).ready(function() {
 
     	});
         
-                $('html').bind('keypress', function(e) {
-            if (e.which === 13) {
-                e.preventDefault();
-                return false;
-            }
-
-        });
-
         //Read username from localstorage if it exists already
         localStorageSupport = true;
         var name;
