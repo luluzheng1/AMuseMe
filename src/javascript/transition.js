@@ -1,7 +1,11 @@
 //changes audio
 var change = document.getElementById('change');
 
-var player = new spotifyPlayer('pop', 10);
+
+var genreForRound = localStorage.getItem('genre');
+console.log(genreForRound);
+var player = new spotifyPlayer(genreForRound, 10);
+
 
 var isPlaying = false;
 function changeAudioElement(){
@@ -55,9 +59,26 @@ if (!num_wrong){
     localStorage.setItem("num_wrong", num_wrong);
 }
 
+
 var my_genre = localStorage.getItem("genre")
 if (!my_genre)
     my_genre = "NA";
+
+// Try to read the score from localStorage
+// if not there then initalize it to 0
+// NOTE; we need to reset this to 0 somewhere when we are done with score
+var score = localStorage.getItem("score");
+if (!score){
+    score = 0;
+    localStorage.setItem("score", score );
+}
+
+var num_wrong = localStorage.getItem("num_wrong");
+if (!num_wrong){
+    num_wrong = 0;
+    localStorage.setItem("num_wrong", num_wrong);
+}
+
 
 //player object; name is inherited from index.js
 var this_player = {
@@ -69,8 +90,10 @@ var this_player = {
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
+    audio.pause();
 
 	userinput = document.getElementById("myanswer").value;
+
 	userinput = userinput.replace(/[^\w\s]/gi, ''); 
 
     //alert(userinput);
@@ -90,10 +113,12 @@ btn.onclick = function() {
         //Save new score in localStorage
         localStorage.score = this_player.thescore;
     }
+
     else
     {
         let content = document.getElementById("answer");
         var songname = player.getSongName();
+
         content.innerHTML = "<h1>Wrong, the song is " + songname + " Score: " + this_player.thescore + "</h1>";
         this_player.nwrong++;
         //Save number wrong in localStorage
@@ -102,9 +127,19 @@ btn.onclick = function() {
 }
 
 
-
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
+    localStorage.score = 0;
+    localStorage.num_wrong = 0;
+
+    //code will be added here to submit to database
+    //reset score so for next round it restarts at 0
+    localStorage.score = 0;
+    localStorage.num_wrong = 0;
+
+    //modal.style.display = "none";
+    //window.location.assign("/");
+}
 
     //code will be added here to submit to database
     playInsert = {
@@ -113,9 +148,8 @@ close.onclick = function() {
         "nwrong": this_player.nwrong,
         "genre": this_player.thegenre
     };
-    console.log(this_player);
-    console.log(JSON.stringify(playInsert));
-    console.log("\n\n\n" + playInsert);
+
+
     var jqxhr = $.ajax( {
         url: "https://amuseme-trivia-game.herokuapp.com/submit",
         type: "POST",
@@ -140,9 +174,11 @@ close.onclick = function() {
         window.location.assign("homepage.html");
     });
 };
+
+
 cont.onclick= function() {
-    modal.style.display = "none";
-    //window.location.reload();
+	modal.style.display = "none";
+	//window.location.reload();
     player.next();
     changeAudioElement();
 }
@@ -177,4 +213,3 @@ audio.onplaying = function() {
 audio.onpause = function() {
   isPlaying = false;
 };
-

@@ -34,7 +34,7 @@ $(document).ready(function() {
     	$('#mask').fadeIn(300);
 
     	$('.blinking-cursor').fadeIn(300);
-        document.getElementById("username").focus();
+      document.getElementById("username").focus();
     	return false;
 	});
 
@@ -69,6 +69,7 @@ $(document).ready(function() {
     document.getElementsByTagName("button")[1].onclick = function(){
         window.location.assign("genre.html");
     };
+
 
 });
 

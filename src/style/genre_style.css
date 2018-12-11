@@ -8,9 +8,9 @@ body {
 h1{
 	font-size:7vw;
 	position: absolute;
-	top: 3.6vh;
-	left: 19vw;
-	font-family:"PT Sans Narrow";
+	top: 3.2vh;
+	left: 12vw;
+	font-family:"Trebuchet MS";
 	font-weight: bold;
 	letter-spacing:0.2em;
 	color:#f2570e;
@@ -28,12 +28,12 @@ img {
 	top:31vh;
 }
 
-#hiphop{
+#hip-hop{
 	left: 38vw;
 	top:31vh;
 }
 
-#classic{
+#classical{
 	left: 69vw;
 	top:31vh;
 }
