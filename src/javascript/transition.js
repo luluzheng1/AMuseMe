@@ -1,3 +1,7 @@
+var btn = document.getElementById("strBtn");
+var score = document.getElementById("score");
+
+// old code
 //changes audio
 var change = document.getElementById('change');
 var genreForRound = localStorage.getItem('genre');
@@ -73,16 +77,16 @@ if (!num_wrong){
 
 //player object; name is inherited from index.js
 var this_player = {
-	thename: name,
-	thescore: score,
-	nwrong: num_wrong
+    thename: name,
+    thescore: score,
+    nwrong: num_wrong
 };
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     audio.pause();
 
-	userinput = document.getElementById("myanswer").value;
+    userinput = document.getElementById("myanswer").value;
     //alert(userinput);
 
     modal.style.display = "block";
@@ -92,13 +96,12 @@ btn.onclick = function() {
     if(result.isCorrect)
     {
         let content = document.getElementById("answer");
-    	content.innerHTML = "<h1>Correct! </h1>" + "<h3> " + player.getSongName() + " by " + player.getArtist() + "</h3>";
+        content.innerHTML = "<h1>Correct! </h1>" + "<h3> " + player.getSongName() + " by " + player.getArtist() + "</h3>";
         this_player.thescore++;
         (document.getElementById("score")).innerHTML = this_player.thescore;
          //Save new score in localStorage
 
-    //modal.style.display = "block";
-    SONGNAME = "test1";
+    }
     else
     {
         let content = document.getElementById("answer");
@@ -126,8 +129,8 @@ close.onclick = function() {
 }
 
 cont.onclick= function() {
-	modal.style.display = "none";
-	//window.location.reload();
+    modal.style.display = "none";
+    //window.location.reload();
     player.next();
     changeAudioElement();
 }
@@ -141,6 +144,7 @@ window.onclick = function(event) {
 
 start.onclick = function() {
     changeAudioElement();
+    btn.style.visibility = "hidden";
 }
 
 var audio = document.getElementById('audio');
@@ -162,3 +166,4 @@ audio.onplaying = function() {
 audio.onpause = function() {
   isPlaying = false;
 };
+
