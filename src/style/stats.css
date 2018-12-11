@@ -1,17 +1,27 @@
+html, body {
+
+  height: 93%;
+
+  width: 80%;
+}
+
 body{
 	font-family:"Trebuchet MS";
 	margin-bottom:8vh;
   	margin-top: 8vh;
-  	position:relative;
+/*  	position:relative;*/
+    margin-left:0;
+    margin-right:0;
 }
 
 h1{
 	font-size:6vw;
 	position: relative;
-	left:33vw;
+    left:8vw;
 	font-weight:bold;
 	letter-spacing:1.3vw;
 	color:#f2570e;
+    max-width:100%;
 }
 
 
@@ -37,7 +47,7 @@ h1{
 
 #tohome {
   position: relative;
-  left: 40%;
+  left: 64%;
   margin-top: 4vh;
   height: 8vh;
   width: 18vw;
@@ -46,6 +56,8 @@ h1{
 
 .tabulator{
 	position:relative;
+    width: 90vw;
+    left:5vw;
 }
 
 .tabulator .tabulator-header {
@@ -345,7 +357,7 @@ h1{
     right: 0;
     top: 0;
     bottom: 0;
-    width: 5px
+    width: 0px
 }
 
 .tabulator .tabulator-col-resize-handle.prev {
