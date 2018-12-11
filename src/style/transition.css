@@ -227,6 +227,7 @@ audio {
 
 }
 
+/*the continue button*/
 .continue {
   color: #1abca6;
   margin-left: 4vw;
@@ -265,6 +266,33 @@ audio {
 }
 
 .button:hover {
+  background: black;
+}
+
+/*hint button*/
+.hintbutton {
+    background-color: #CC6600;
+  /* color of button */
+  color: #1abca6;
+  /* color of button text */
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 6px 4px;
+  border: none;
+  font: 12px;
+  font-weight: bold;
+  width: 130px;
+  /* dimension of box */
+  height: 40px;
+  position: center;
+  top: 90%;
+  /* position at bottom */
+  bottom: 0px;
+  left: 50%;
+  /* center*/
+}
+
+.hintbutton:hover {
   background: black;
 }
 
