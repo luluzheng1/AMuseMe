@@ -80,7 +80,7 @@ body{
     width: 130px;   /* dimension of box */
     height:40px;
     position:absolute;
-    top: 85%; /* position at bottom */
+    top: 40%; /* position at bottom */
     bottom:0px;
     left: 45%;  /* center*/
 }
