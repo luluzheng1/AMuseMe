@@ -16,7 +16,14 @@ $(document).ready(function() {
 
     	});
         
-        
+                $('html').bind('keypress', function(e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                return false;
+            }
+
+        });
+
         //Read username from localstorage if it exists already
         localStorageSupport = true;
         var name;
@@ -37,6 +44,13 @@ $(document).ready(function() {
 
     	$('.blinking-cursor').fadeIn(300);
       document.getElementById("username").focus();
+        $('html').bind('keypress', function(e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                return false;
+            }
+
+        });
     	return false;
 	});
 
