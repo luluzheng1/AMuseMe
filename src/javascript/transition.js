@@ -1,6 +1,3 @@
-var btn = document.getElementById("strBtn");
-var score = document.getElementById("score");
-
 // old code
 //changes audio
 var change = document.getElementById('change');
@@ -144,7 +141,7 @@ window.onclick = function(event) {
 
 start.onclick = function() {
     changeAudioElement();
-    btn.style.visibility = "hidden";
+    start.style.visibility = "hidden";
 }
 
 var audio = document.getElementById('audio');
