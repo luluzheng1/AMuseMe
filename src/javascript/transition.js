@@ -127,25 +127,23 @@ btn.onclick = function() {
 
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
-        if(this_player.nwrong == 5)
+        if(this_player.nwrong >= 5)
+        {
+
           window.location.assign("stats.html")
+        }
     }
 }
 
 
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
-    localStorage.score = 0;
-    localStorage.num_wrong = 0;
 
-    //code will be added here to submit to database
-    //reset score so for next round it restarts at 0
-    localStorage.score = 0;
-    localStorage.num_wrong = 0;
 
     //modal.style.display = "none";
 
     window.location.assign("stats.html");
+
 
 }
 
