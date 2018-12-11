@@ -94,8 +94,9 @@ a.bttn:focus {
 
 .container {
   width: 100%;
+  position: absolute;
+  top: 20vh;
   text-align: center;
-  margin-top: 0vh;
 }
 
 .circle {
@@ -148,13 +149,113 @@ a.bttn:focus {
 
 .score {
   color: #1abca6;
-  font-size: 70px;
+  font-size: 30vh;
   letter-spacing: 5px;
   position: absolute;
-  top: 10px;
-  right: 0;
+  top: 0vh;
+  right: 1vh;
 }
 
 audio {
   display: none;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 200px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  color: #000;
+  background: #1abca6;
+  margin: auto;
+  padding: 50px;
+  border: 1px solid #888;
+  width: 80%;
+  border: 2px solid #CC6600;
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px;
+  /* Firefox */
+  -webkit-border-radius: 3px;
+  /* Safari, Chrome */
+}
+
+/* The Close Button */
+.close {
+  color: gray;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: #aaaaaa;
+}
+
+.continue {
+  color: #1abca6;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: #CC6600;
+}
+
+.continue:hover,
+.continue:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #CC6600;
+  /* color of button */
+  color: #1abca6;
+  /* color of button text */
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 6px 4px;
+  border: none;
+  font: 12px;
+  font-weight: bold;
+  width: 130px;
+  /* dimension of box */
+  height: 40px;
+  position: absolute;
+  top: 90%;
+  /* position at bottom */
+  bottom: 0px;
+  left: 50%;
+  /* center*/
+}
+
+.button:hover {
+  background: black;
+}
+
+#myanswer {
+  position: absolute;
+  top: 80%;
+  left: 45%;
+}
+
+#myBtn {
+  position: absolute;
+  top: 90%;
+  left: 45%;
 }
