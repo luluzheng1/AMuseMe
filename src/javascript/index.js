@@ -64,7 +64,6 @@ $(document).ready(function() {
         if (localStorageSupport)
             localStorage.setItem('username', name); 
 
-        alert(name);
         window.location.assign("genre.html");
     };
 
