@@ -79,6 +79,7 @@ $(document).ready(function() {
 
     //if user decides to play anonymously 
     document.getElementsByTagName("button")[1].onclick = function(){
+        localStorage.num_wrong = 0;
         window.location.assign("genre.html");
     };
 

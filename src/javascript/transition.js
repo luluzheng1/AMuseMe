@@ -129,7 +129,7 @@ btn.onclick = function() {
         this_player.nwrong++;
         let content = document.getElementById("answer");
         var songname = player.getSongName();
-        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + "by " + player.getArtist() + "</h3>" + "<h4>#wrong: " + this_player.nwrong + "</h4>";
+        content.innerHTML = "<h1>Wrong, the song is " + songname + "</h1>" + "<h3>" + player.getSongName() + " by " + player.getArtist() + "</h3>" + "<h4>#wrong: " + this_player.nwrong + "</h4>";
 
         //Save number wrong in localStorage
         localStorage.num_wrong = this_player.nwrong;
