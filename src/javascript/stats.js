@@ -9,7 +9,7 @@
 $(document).ready(function() {
     console.log("here");
   var table = new Tabulator(".tabulator", {
-    ajaxURL:"https://shielded-shore-69038.herokuapp.com/history", //change this to the project's website
+    ajaxURL:"https://amuseme-trivia-game.herokuapp.com/history", //change this to the project's website
     ajaxParams:{key1:"username", key2:"score"},
     ajaxConfig:{
       method:"GET",
