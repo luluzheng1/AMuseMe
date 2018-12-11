@@ -8,15 +8,19 @@
 }
 
 html, body {
+
   height: 93%;
+
   width: 100%;
 }
 
 body {
   margin-right: 0px;
   margin-left: 0px;
+
   margin-bottom: 0;
   margin-top: 10vh;
+
   padding-bottom: 30%;
   border-top: 10px solid #1abca6;
   border-bottom: 10px solid #1abca6;
@@ -31,6 +35,7 @@ body {
 }
 
 .flex {
+
   margin-top: 6%;
   display: flex;
   position: absolute;
@@ -50,6 +55,7 @@ a.bttn:focus {
 }
 
 .bttn {
+
   left:5vw;
   height: 12vh;
   font-size: 2.5vh;
@@ -60,6 +66,7 @@ a.bttn:focus {
   width: 20vw;
   font-weight: bold;
   padding-top: 3.5vh;
+
   border: 3px solid #1abca6;
   border-radius: 2px;
   position: relative;
@@ -92,22 +99,17 @@ a.bttn:focus {
   opacity: 1;
 }
 
-/*.container {
-  position: absolute;
-}
-*/
-
 
 .playBut {
   /*  border: 1px solid red;*/
   display: inline-block;
   -webkit-transition: all 0.5s ease;
+
   position:absolute;
   top: 26vh;
   left: 41%;
   height: 18vw;
   width: 18vw;
-
 }
 .playBut .triangle {
   -webkit-transition: all 0.7s ease-in-out;
@@ -155,11 +157,13 @@ a.bttn:focus {
 
 .score {
   color: #1abca6;
+
   font-size: 18vw;
   letter-spacing: 5px;
   position: absolute;
   top: 2vh;
   right: 3vw;
+
 }
 
 audio {
@@ -180,7 +184,9 @@ audio {
   top: 0;
   width: 100%;
   /* Full width */
+
   height:100%;
+
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
@@ -195,7 +201,9 @@ audio {
   color: #000;
   background: #1abca6;
   margin: auto;
+
   padding: 25px;
+
   border: 1px solid #888;
   width: 80%;
   border: 2px solid #CC6600;
@@ -204,16 +212,19 @@ audio {
   /* Firefox */
   -webkit-border-radius: 3px;
   /* Safari, Chrome */
+
   font-size:1.5vw;
 }
 
 /* The Close Button */
 .close {
   color: gray;
+
   font-size: 2vw;
   font-weight: bold;
   background-color: #aaaaaa;
 /*  padding: 8px 8px 8px;*/
+
 }
 
 .continue {
@@ -263,6 +274,7 @@ audio {
   left: 43%;
   height: 4vh;
   width: 15vw;
+
 }
 
 #myBtn {

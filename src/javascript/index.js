@@ -12,16 +12,32 @@ $(document).ready(function() {
         $('.login-popup').css({ 
         'margin-top' : -popMargTop,
         'margin-left' : -popMargLeft
-        });
-    
-        // Add the mask to body
-        $('body').append('<div id="mask"></div>');
-        $('#mask').fadeIn(300);
 
-        $('.blinking-cursor').fadeIn(300);
+    	});
         
-        return false;
-    });
+        
+        //Read username from localstorage if it exists already
+        localStorageSupport = true;
+        var name;
+        try {
+            name = localStorage.getItem('username')
+        }
+        catch (err) {
+            //localStorage is not supported
+            localStorageSupport = false;
+        }
+        if (name) {
+            document.getElementById("username").value  = name;
+        }
+    	
+        // Add the mask to body
+    	$('body').append('<div id="mask"></div>');
+    	$('#mask').fadeIn(300);
+
+    	$('.blinking-cursor').fadeIn(300);
+      document.getElementById("username").focus();
+    	return false;
+	});
 
 
     // When clicking on the button close, close the popup window
@@ -43,6 +59,11 @@ $(document).ready(function() {
         name = document.getElementById("username").value;
 
         name = sanitize(name);
+
+        //write name to local storage
+        if (localStorageSupport)
+            localStorage.setItem('username', name); 
+
         alert(name);
         window.location.assign("genre.html");
     };
