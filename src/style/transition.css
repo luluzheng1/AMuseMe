@@ -8,15 +8,19 @@
 }
 
 html, body {
-  height: 100%;
+
+  height: 93%;
+
   width: 100%;
 }
 
 body {
   margin-right: 0px;
   margin-left: 0px;
-  margin-bottom: 40px;
-  margin-top: 30px;
+
+  margin-bottom: 0;
+  margin-top: 10vh;
+
   padding-bottom: 30%;
   border-top: 10px solid #1abca6;
   border-bottom: 10px solid #1abca6;
@@ -31,11 +35,10 @@ body {
 }
 
 .flex {
-  min-height: 20vh;
-  margin-top: 30px;
+
+  margin-top: 6%;
   display: flex;
-  align-items: left;
-  justify-content: left;
+  position: absolute;
 }
 
 a.bttn {
@@ -52,14 +55,18 @@ a.bttn:focus {
 }
 
 .bttn {
-  left: 20vh;
-  letter-spacing: 2px;
+
+  left:5vw;
+  height: 12vh;
+  font-size: 2.5vh;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   display: inline-block;
   text-align: center;
-  width: 270px;
+  width: 20vw;
   font-weight: bold;
-  padding: 14px 0px;
+  padding-top: 3.5vh;
+
   border: 3px solid #1abca6;
   border-radius: 2px;
   position: relative;
@@ -92,25 +99,17 @@ a.bttn:focus {
   opacity: 1;
 }
 
-.container {
-  width: 100%;
-  position: absolute;
-  top: 20vh;
-  text-align: center;
-}
-
-.circle {
-  stroke: #CC6600;
-  stroke-dasharray: 650;
-  stroke-dashoffset: 650;
-  -webkit-transition: all 0.5s ease-in-out;
-  opacity: 0.3;
-}
 
 .playBut {
   /*  border: 1px solid red;*/
   display: inline-block;
   -webkit-transition: all 0.5s ease;
+
+  position:absolute;
+  top: 26vh;
+  left: 41%;
+  height: 18vw;
+  width: 18vw;
 }
 .playBut .triangle {
   -webkit-transition: all 0.7s ease-in-out;
@@ -119,6 +118,15 @@ a.bttn:focus {
   stroke: #000;
   transform: translateY(0);
 }
+
+.playBut .circle {
+  stroke: #CC6600;
+  stroke-dasharray: 650;
+  stroke-dashoffset: 650;
+  -webkit-transition: all 0.5s ease-in-out;
+  opacity: 0.3;
+}
+
 .playBut:hover .triangle {
   stroke-dashoffset: 0;
   opacity: 1;
@@ -149,11 +157,13 @@ a.bttn:focus {
 
 .score {
   color: #1abca6;
-  font-size: 30vh;
+
+  font-size: 18vw;
   letter-spacing: 5px;
   position: absolute;
-  top: 0vh;
-  right: 1vh;
+  top: 2vh;
+  right: 3vw;
+
 }
 
 audio {
@@ -174,7 +184,9 @@ audio {
   top: 0;
   width: 100%;
   /* Full width */
-  height: 100%;
+
+  height:100%;
+
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
@@ -189,7 +201,9 @@ audio {
   color: #000;
   background: #1abca6;
   margin: auto;
-  padding: 50px;
+
+  padding: 25px;
+
   border: 1px solid #888;
   width: 80%;
   border: 2px solid #CC6600;
@@ -198,19 +212,25 @@ audio {
   /* Firefox */
   -webkit-border-radius: 3px;
   /* Safari, Chrome */
+
+  font-size:1.5vw;
 }
 
 /* The Close Button */
 .close {
   color: gray;
-  font-size: 28px;
+
+  font-size: 2vw;
   font-weight: bold;
   background-color: #aaaaaa;
+/*  padding: 8px 8px 8px;*/
+
 }
 
 .continue {
   color: #1abca6;
-  font-size: 28px;
+  margin-left: 4vw;
+  font-size: 2vw;
   font-weight: bold;
   background-color: #CC6600;
 }
@@ -250,12 +270,18 @@ audio {
 
 #myanswer {
   position: absolute;
-  top: 80%;
-  left: 45%;
+  top: 65vh;
+  left: 43%;
+  height: 4vh;
+  width: 15vw;
+
 }
 
 #myBtn {
   position: absolute;
-  top: 90%;
-  left: 45%;
+  top: 70vh;
+  left: 43%;
+  height: 8vh;
+  width: 15vw;
+  font-size:2vw;
 }

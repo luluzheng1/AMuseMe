@@ -1,17 +1,18 @@
 
 
 $(document).ready(function() {
-		
+        
         $('a.popup').click(function() {
             $('.login-popup').fadeIn(300);
  
-    	//Set the center alignment padding + border see css style
-    	var popMargTop = ($('.login-popup').height() + 24) / 2; 
-    	var popMargLeft = ($('.login-popup').width() + 24) / 2; 
+        //Set the center alignment padding + border see css style
+        var popMargTop = ($('.login-popup').height() + 24) / 2; 
+        var popMargLeft = ($('.login-popup').width() + 24) / 2; 
     
-    	$('.login-popup').css({ 
+        $('.login-popup').css({ 
         'margin-top' : -popMargTop,
         'margin-left' : -popMargLeft
+
     	});
         
         
@@ -39,24 +40,26 @@ $(document).ready(function() {
 	});
 
 
-	// When clicking on the button close, close the popup window
-	$('a.close, #mask').live('click', function() { 
-  		$('#mask , .login-popup').fadeOut(300 , function() {
-    		$('#mask').remove();  
-		}); 
-		return false;
-	});
+    // When clicking on the button close, close the popup window
+    $('a.close, #mask').live('click', function() { 
+        $('#mask , .login-popup').fadeOut(300 , function() {
+            $('#mask').remove();  
+        }); 
+        return false;
+    });
 
-	$('fieldset.textbox').click(function(){
-		$('.blinking-cursor').fadeOut(300);
-	});
+    $('fieldset.textbox').click(function(){
+        $('.blinking-cursor').fadeOut(300);
+    });
 
 
 
     //if user entered a username, inherit the username to the following pages
     document.getElementsByTagName("button")[0].onclick = function(){
         name = document.getElementById("username").value;
-        name = name.replace(/[^\w\s]/gi, ''); 
+
+        name = sanitize(name);
+
         //write name to local storage
         if (localStorageSupport)
             localStorage.setItem('username', name); 
@@ -72,4 +75,17 @@ $(document).ready(function() {
 
 
 });
+
+function sanitize(string) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#x27;',
+                "/": '&#x2F;',
+                };
+            const reg = /[&<>"'/]/ig;
+            return string.replace(reg, (match)=>(map[match]));
+        };
 
